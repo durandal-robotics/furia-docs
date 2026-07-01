@@ -1,0 +1,55 @@
+site_name: Furia C4ISR
+site_description: Furia C2 Platform Documentation — 25 C2 types, 63 extensions, 152 services
+site_url: https://durandal-robotics.github.io/furia-docs/
+repo_url: https://github.com/durandal-robotics/furia-docs
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+    - content.action.edit
+
+nav:
+  - Home: index.md
+  - C2 Types:
+    - Overview: c2-types/overview.md
+    - Counter-UAS: c2-types/c-uas.md
+    - C4ISR Headquarters: c2-types/furia-hq.md
+    - Tactical Frontline: c2-types/furia-frontline.md
+    - FPV + ISR Recon: c2-types/fpv-isr.md
+    - Deep ISR: c2-types/isr-deep.md
+    - Search & Strike: c2-types/search-strike.md
+    - MUM-T: c2-types/mum-t.md
+    - Ground Control Station: c2-types/gs-like.md
+    - Maritime: c2-types/maritime.md
+    - Denied Environment: c2-types/denied-environment.md
+    - C2 Messaging: c2-types/c2-messaging.md
+    - Fires Targeting: c2-types/fires-targeting.md
+    - Fires BDA: c2-types/fires-bda.md
+    - Planning Mission: c2-types/planning-mission.md
+    - Intel ISR: c2-types/intel-isr.md
+  - Screenshots: screenshots/gallery.md
+  - Extensions: https://durandal-robotics.github.io/furia-docs/extensions/
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/durandal-robotics/furia-docs
