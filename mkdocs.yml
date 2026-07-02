@@ -4,6 +4,10 @@ site_url: https://durandal-robotics.github.io/furia-docs/
 repo_url: https://github.com/durandal-robotics/furia-docs
 edit_uri: edit/main/docs/
 
+plugins:
+  - search
+  - mermaid2
+
 theme:
   name: material
   palette:

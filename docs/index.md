@@ -2,8 +2,9 @@
 
 **7 C2 templates** · **64 extensions** · **152 services** · **99 marketplace modules**
 
-Furia provides **7 C2 templates** for different operational roles.
-Each template bundles exactly the services you need — nothing more.
+Furia is a software platform that generates complete C2 systems — from
+vehicle-mounted Edge C2 to full Headquarters — from a single codebase,
+selectable by mission profile.
 
 ## Pick Your Template
 
@@ -20,21 +21,49 @@ Each template bundles exactly the services you need — nothing more.
 ## Quickstart
 
 ```bash
-# Start with 3 services, no Postgres needed
+# Prerequisites: git, Rust, and 'just'
+cargo install just
+
+# One-command setup (clones furia-core, builds release, starts gateway)
 just setup
+
+# Open the API
 open http://localhost:3226/swagger-ui/
 ```
 
 ## Architecture
 
-```
-┌─────────────┐     ┌──────────────┐     ┌──────────────┐
-│  Tauri UI   │────▶│  152 Services│────▶│   PostGIS    │
-│  (SolidJS)  │     │  (7 templates)│    │  (Spatial)   │
-└─────────────┘     └──────────────┘     └──────────────┘
-                           │
-                    ┌──────▼──────┐
-                    │ 64 Extensions│
-                    │  (WASM)      │
-                    └─────────────┘
+```mermaid
+graph TB
+    subgraph "7 C2 Templates"
+        HQ["C2 Headquarters"]
+        FL["C2 Frontline"]
+        ED["C2 Edge"]
+        MA["C2 Maritime"]
+        AB["C2 Airborne"]
+        IN["C2 Intelligence"]
+        MS["C2 Messaging"]
+    end
+    subgraph "Platform Layer"
+        UI["Tauri Desktop App<br/>(SolidJS)"]
+        SVC["152 Backend Services"]
+        EXT["64 WASM Extensions"]
+        DB["PostGIS Database"]
+    end
+    subgraph "Extension Types"
+        PL["Policy Providers"]
+        SI["Simulation Providers"]
+        SE["Sensor Adapters"]
+        DC["Decomposition Strategies"]
+    end
+    HQ --> UI
+    FL --> UI
+    ED --> UI
+    UI --> SVC
+    SVC --> DB
+    SVC --> EXT
+    EXT --> PL
+    EXT --> SI
+    EXT --> SE
+    EXT --> DC
 ```
