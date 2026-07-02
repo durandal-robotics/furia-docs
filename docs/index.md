@@ -1,104 +1,40 @@
 # Furia C2 Platform
 
-**152 services · 63 extensions · 25 C2 profiles · 27 CI workflows**
+**7 C2 templates** · **64 extensions** · **152 services** · **99 marketplace modules**
 
-Furia is a modular C2 (Command & Control) **platform** that generates complete
-C2 systems for any mission type. Not one C2 — **any C2 you need**.
+Furia provides **7 C2 templates** for different operational roles.
+Each template bundles exactly the services you need — nothing more.
 
-## 25 C2 Types Available
+## Pick Your Template
 
-<div class="grid cards" markdown>
-
-- **:material-drone: Counter-UAS** `profile-c-uas`
-  Airspace management, EW, IFF, threat scoring
-- **:material-headquarters: C4ISR Headquarters** `profile-furia-hq`
-  COP, intel, planning, BDA, force tracking
-- **:material-soldier: Frontline C2** `profile-furia-frontline`
-  BFT, MEDEVAC, route analysis, tactical graphics
-- **:material-cctv: FPV+ISR** `profile-fpv-isr`
-  Single-operator drone ISR
-- **:material-binoculars: Deep ISR** `profile-isr-deep`
-  Multi-asset beyond-LOS recon
-- **:material-target: Search & Strike** `profile-search-strike`
-  Find and engage with IHL gating
-- **:material-helicopter: MUM-T** `profile-mum-t`
-  Helicopter + UAV teaming
-- **:material-monitor-dashboard: GCS** `profile-gs-like`
-  Full ground control station
-- **:material-ship: Maritime** `profile-maritime`
-  Vessel tracking, BDA, routing
-- **:material-signal-cellular-outline: Denied Env** `profile-denied-environment`
-  GNSS-denied, comms-contested ops
-- **:material-email-newsletter: C2 Messaging** `profile-c2-messaging`
-  SitRep, OPORD, FRAGO, MEDEVAC
-- **:material-fire: Fires: Targeting** `profile-fires-targeting`
-  Kill-chain, JFA, JTA, TST (8 services)
-- **:material-chart-donut: Fires: BDA** `profile-fires-bda`
-  Damage assessment (5 services)
-- **:material-chart-line: Planning: Mission** `profile-planning-mission`
-  Mission planning (6 services)
-- **:material-brain: Planning: Decision** `profile-planning-decision`
-  Decision engine (4 services)
-- **:material-eye: Intel: ISR** `profile-intel-isr`
-  Sensor fusion + tracking (5 services)
-- **:material-shield-lock: Intel: Cyber** `profile-intel-cyber`
-  Incident response (4 services)
-
-</div>
-
-## How It Works
-
-```bash
-# 1. Pick your C2 type
-furia-market install profile-c-uas
-
-# 2. (Optional) Compose with an environment
-furia-market install profile-env-contested
-
-# 3. Run it
-open FuriaC4ISR.app
-
-# Or from source
-cargo run --release -p interop-gateway
-```
-
-Every C2 type is built from the same codebase — different profiles select different
-service combinations. All 25 profiles are tested in CI and available as a DMG.
+| Template | Services | Best For |
+|----------|----------|----------|
+| **🏛 C2 Headquarters** | 7 | Brigade/Division HQ — full command post |
+| **🔭 C2 Frontline** | 4 | Platoon/Company — tactical C2 |
+| **🚛 C2 Edge** | 4 | AFV/IFV crew — lightweight vehicle C2 |
+| **⚓ C2 Maritime** | 3 | Naval HQ — maritime domain awareness |
+| **🚁 C2 Airborne** | 3 | Aviation — MUM-T, airspace mgmt |
+| **🧠 C2 Intelligence** | 5 | J2 — intelligence fusion |
+| **📨 C2 Messaging** | 1 | Any echelon — military messaging |
 
 ## Quickstart
 
 ```bash
-# Install Furia C4ISR
-open FuriaC4ISR.dmg  # → drag to Applications
-
-# Or build from source
-# One-command setup
+# Start with 3 services, no Postgres needed
 just setup
-
-# Or step by step:
-./scripts/build-dmg.sh
+open http://localhost:3226/swagger-ui/
 ```
 
 ## Architecture
 
 ```
 ┌─────────────┐     ┌──────────────┐     ┌──────────────┐
-│  Tauri UI   │────▶│  Services    │────▶│   PostGIS    │
-│  (SolidJS)  │     │  (152 svcs)  │     │  (Spatial)   │
+│  Tauri UI   │────▶│  152 Services│────▶│   PostGIS    │
+│  (SolidJS)  │     │  (7 templates)│    │  (Spatial)   │
 └─────────────┘     └──────────────┘     └──────────────┘
                            │
                     ┌──────▼──────┐
-                    │  Extensions │
-                    │  (63 WASM)  │
+                    │ 64 Extensions│
+                    │  (WASM)      │
                     └─────────────┘
 ```
-
-## CI Pipeline
-
-Every push builds and tests all 25 C2 types in parallel:
-
-```
-Code → Build 25 profiles → Assemble DMG → E2E Tests → Artifact
-```
-
-See the [full CI pipeline](https://github.com/vlordier/furia-control/actions) for latest builds.
