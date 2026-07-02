@@ -37,6 +37,9 @@ nav:
     - PostGIS over Neo4j: adr/002-postgis-over-neo4j.md
     - Microservices: adr/003-microservices-over-monolith.md
   - Benchmarks: benchmarks.md
+  - API Reference: api-reference.md
+  - Security: security.md
+  - API Playground: https://durandal-robotics.github.io/furia-docs/api-reference/#swagger-ui
   - Developer Guide:
     - Building Your Own C2: developer-guide/building-your-own-c2.md
     - SDK Reference: SDK.md
