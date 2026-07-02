@@ -28,6 +28,15 @@ nav:
     - Overview: c2-types/overview.md
     - Counter-UAS: c2-types/c-uas.md
     - All 25 Profiles: https://durandal-robotics.github.io/furia-docs/c2-types/overview/
+  - Integrations:
+    - ATAK: integrations/atak.md
+    - SAPIENT: integrations/sapient.md
+    - STANAG 4586: integrations/stanag.md
+  - Architecture:
+    - WASM Extensions: adr/001-wasm-extensions.md
+    - PostGIS over Neo4j: adr/002-postgis-over-neo4j.md
+    - Microservices: adr/003-microservices-over-monolith.md
+  - Benchmarks: benchmarks.md
   - Developer Guide:
     - Building Your Own C2: developer-guide/building-your-own-c2.md
     - SDK Reference: SDK.md
