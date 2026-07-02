@@ -30,7 +30,7 @@ GET /health
 
 ## Screenshot
 
-![C-UAS Dashboard](../../screenshots/profile-c-uas.png)
+![C-UAS Dashboard](../screenshots/profile-c-uas.svg)
 
 ## Quickstart
 
