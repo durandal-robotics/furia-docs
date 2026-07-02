@@ -1,5 +1,5 @@
-site_name: Furia C4ISR
-site_description: Furia C2 Platform Documentation — 25 C2 types, 63 extensions, 152 services
+site_name: Furia C2 Platform
+site_description: Furia C2 Platform — generates C2 systems for any mission. 25 C2 types, 63 extensions, 152 services
 site_url: https://durandal-robotics.github.io/furia-docs/
 repo_url: https://github.com/durandal-robotics/furia-docs
 edit_uri: edit/main/docs/

@@ -1,9 +1,9 @@
-# Furia C4ISR
+# Furia C2 Platform
 
 **152 services · 63 extensions · 25 C2 profiles · 27 CI workflows**
 
-Furia is a modular C2 (Command & Control) platform that generates complete
-C2 systems for any mission type — from Counter-UAS to full C4ISR Headquarters.
+Furia is a modular C2 (Command & Control) **platform** that generates complete
+C2 systems for any mission type. Not one C2 — **any C2 you need**.
 
 ## 25 C2 Types Available
 
@@ -11,7 +11,7 @@ C2 systems for any mission type — from Counter-UAS to full C4ISR Headquarters.
 
 - **:material-drone: Counter-UAS** `profile-c-uas`
   Airspace management, EW, IFF, threat scoring
-- **:material-headquarters: C4ISR HQ** `profile-furia-hq`
+- **:material-headquarters: C4ISR Headquarters** `profile-furia-hq`
   COP, intel, planning, BDA, force tracking
 - **:material-soldier: Frontline C2** `profile-furia-frontline`
   BFT, MEDEVAC, route analysis, tactical graphics
@@ -45,6 +45,25 @@ C2 systems for any mission type — from Counter-UAS to full C4ISR Headquarters.
   Incident response (4 services)
 
 </div>
+
+## How It Works
+
+```bash
+# 1. Pick your C2 type
+furia-market install profile-c-uas
+
+# 2. (Optional) Compose with an environment
+furia-market install profile-env-contested
+
+# 3. Run it
+open FuriaC4ISR.app
+
+# Or from source
+cargo run --release -p interop-gateway
+```
+
+Every C2 type is built from the same codebase — different profiles select different
+service combinations. All 25 profiles are tested in CI and available as a DMG.
 
 ## Quickstart
 
