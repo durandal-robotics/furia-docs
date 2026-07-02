@@ -1,5 +1,10 @@
 # Scenario: C-UAS Defense in Contested Spectrum
 
+![C-UAS Walkthrough](screenshots/walkthrough-cuas.svg)
+*Animated walkthrough — detection → assessment → engagement → BDA (12 seconds total)*
+
+## Situation
+
 A step-by-step walkthrough of a complete C2 operation using Furia.
 
 ## Situation

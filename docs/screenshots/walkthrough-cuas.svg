@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes slideIn { from { transform: translateX(-50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+      @keyframes pulse { 0% { r: 15; } 50% { r: 20; } 100% { r: 15; } }
+      @keyframes highlight { 0% { fill: #374151; } 50% { fill: #6366f1; } 100% { fill: #374151; } }
+      .step1 { animation: fadeIn 1s ease-out 0.5s both; }
+      .step2 { animation: fadeIn 1s ease-out 3s both; }
+      .step3 { animation: fadeIn 1s ease-out 6s both; }
+      .step4 { animation: fadeIn 1s ease-out 9s both; }
+      .arrow { animation: pulse 2s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#1e1e1e" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" fill="#e0e0e0" font-size="20" font-family="sans-serif" font-weight="bold">C-UAS Defense — Walkthrough</text>
+  <line x1="100" y1="55" x2="700" y2="55" stroke="#333" stroke-width="1"/>
+
+  <!-- Timeline base -->
+  <line x1="100" y1="100" x2="700" y2="100" stroke="#555" stroke-width="2"/>
+  <circle cx="120" cy="100" r="8" fill="#6366f1" class="arrow"/>
+  <circle cx="250" cy="100" r="8" fill="#6366f1" class="arrow" style="animation-delay: 2.5s"/>
+  <circle cx="400" cy="100" r="8" fill="#6366f1" class="arrow" style="animation-delay: 5.5s"/>
+  <circle cx="550" cy="100" r="8" fill="#6366f1" class="arrow" style="animation-delay: 8.5s"/>
+  <circle cx="680" cy="100" r="8" fill="#22c55e" class="arrow" style="animation-delay: 11s"/>
+
+  <!-- Step 1: Detection -->
+  <g class="step1">
+    <rect x="40" y="130" width="180" height="100" rx="8" fill="#1e3a5f" stroke="#2563eb" stroke-width="2"/>
+    <text x="130" y="160" text-anchor="middle" fill="#60a5fa" font-size="14" font-family="monospace" font-weight="bold">1. Detection</text>
+    <text x="130" y="180" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">SAPIENT sensor spots UAV</text>
+    <text x="130" y="195" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">@ 5 km range</text>
+    <text x="130" y="215" text-anchor="middle" fill="#64748b" font-size="10" font-family="monospace">T+00:00</text>
+  </g>
+
+  <!-- Step 2: Assessment -->
+  <g class="step2">
+    <rect x="170" y="260" width="180" height="100" rx="8" fill="#3b1f3b" stroke="#d946ef" stroke-width="2"/>
+    <text x="260" y="290" text-anchor="middle" fill="#e879f9" font-size="14" font-family="monospace" font-weight="bold">2. Assessment</text>
+    <text x="260" y="310" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">Threat level: HIGH</text>
+    <text x="260" y="325" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">IHL check: ALLOW</text>
+    <text x="260" y="345" text-anchor="middle" fill="#64748b" font-size="10" font-family="monospace">T+00:05</text>
+  </g>
+
+  <!-- Step 3: Engagement -->
+  <g class="step3">
+    <rect x="310" y="130" width="180" height="100" rx="8" fill="#3b1f1f" stroke="#ef4444" stroke-width="2"/>
+    <text x="400" y="160" text-anchor="middle" fill="#f87171" font-size="14" font-family="monospace" font-weight="bold">3. Engagement</text>
+    <text x="400" y="180" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">Effector cued</text>
+    <text x="400" y="195" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">Target neutralized</text>
+    <text x="400" y="215" text-anchor="middle" fill="#64748b" font-size="10" font-family="monospace">T+00:10</text>
+  </g>
+
+  <!-- Step 4: BDA -->
+  <g class="step4">
+    <rect x="440" y="260" width="180" height="100" rx="8" fill="#1a3b1f" stroke="#22c55e" stroke-width="2"/>
+    <text x="530" y="290" text-anchor="middle" fill="#4ade80" font-size="14" font-family="monospace" font-weight="bold">4. BDA</text>
+    <text x="530" y="310" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">Complete kill</text>
+    <text x="530" y="325" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">No collateral</text>
+    <text x="530" y="345" text-anchor="middle" fill="#64748b" font-size="10" font-family="monospace">T+00:12</text>
+  </g>
+
+  <!-- Arrows between steps -->
+  <g class="step1">
+    <line x1="220" y1="180" x2="300" y2="180" stroke="#555" stroke-width="1.5" stroke-dasharray="4"/>
+    <polygon points="295,175 305,180 295,185" fill="#555"/>
+  </g>
+  <g class="step2">
+    <line x1="350" y1="310" x2="430" y2="310" stroke="#555" stroke-width="1.5" stroke-dasharray="4"/>
+    <polygon points="425,305 435,310 425,315" fill="#555"/>
+  </g>
+  <g class="step3">
+    <line x1="490" y1="180" x2="570" y2="260" stroke="#555" stroke-width="1.5" stroke-dasharray="4"/>
+  </g>
+
+  <!-- Results summary -->
+  <g class="step4">
+    <rect x="140" y="420" width="520" height="70" rx="8" fill="#1a2e3b" stroke="#6366f1" stroke-width="1"/>
+    <text x="400" y="445" text-anchor="middle" fill="#e0e0e0" font-size="13" font-family="sans-serif">Total response time: ~12 seconds</text>
+    <text x="400" y="465" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">Detection → IHL check → Engagement → BDA in under 15 seconds</text>
+  </g>
+
+  <!-- Download full report -->
+  <g class="step4">
+    <text x="400" y="530" text-anchor="middle" fill="#6366f1" font-size="12" font-family="sans-serif">See the full scenario walkthrough in the docs</text>
+  </g>
+</svg>
