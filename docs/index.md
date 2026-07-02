@@ -31,6 +31,11 @@ just setup
 open http://localhost:3226/swagger-ui/
 ```
 
+## API Walkthrough
+
+![API Walkthrough](screenshots/api-walkthrough.gif)
+*Live walkthrough — health endpoint, Swagger UI, marketplace, messaging (9 seconds)*
+
 ## Architecture
 
 ```mermaid

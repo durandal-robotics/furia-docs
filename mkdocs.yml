@@ -24,32 +24,17 @@ nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - C2 Templates: c2-templates.md
-  - C2 Types:
-    - Overview: c2-types/overview.md
-    - Counter-UAS: c2-types/c-uas.md
-    - All Profiles: c2-types/overview.md
   - Integrations:
     - ATAK: integrations/atak.md
     - SAPIENT: integrations/sapient.md
     - STANAG 4586: integrations/stanag.md
-  - Architecture:
-    - WASM Extensions: adr/001-wasm-extensions.md
-    - PostGIS over Neo4j: adr/002-postgis-over-neo4j.md
-    - Microservices: adr/003-microservices-over-monolith.md
-  - Benchmarks: benchmarks.md
-  - API Reference: api-reference.md
-  - Security: security.md
-
   - Developer Guide:
     - Building Your Own C2: developer-guide/building-your-own-c2.md
     - SDK Reference: SDK.md
     - Service Port Map: developer-guide/service-ports.md
     - Sizing Guide: developer-guide/sizing-guide.md
     - Troubleshooting: developer-guide/troubleshooting.md
-  - Platform:
-    - Versions: VERSIONS.md
-  - UI Components:
-    - App Layout & Shells: ui-components/overview.md
+  - UI Components: ui-components/overview.md
   - Tutorials:
     - Building an Extension: tutorials/building-an-extension.md
   - Extensions:
@@ -58,32 +43,20 @@ nav:
     - Sensor: extensions/sensor.md
     - Assessment: extensions/assessment.md
     - Policy: extensions/policy.md
-    - Decomposition: extensions/decomposition.md
-    - Dispatch: extensions/dispatch.md
-    - Fusion: extensions/fusion.md
-    - Logistics: extensions/logistics.md
-    - Airspace Manager: extensions/airspace-manager.md
-    - Engagement Planner: extensions/engagement-planner.md
-    - Ew Sim: extensions/ew-sim.md
-    - Terrain: extensions/terrain.md
-    - Threat Scorer: extensions/threat-scorer.md
-    - Decision Tree: extensions/decision-tree.md
-    - Ui Plugin: extensions/ui-plugin.md
-  - Scenario: scenario.md
-  - FAQ: faq.md
-  - Glossary: glossary.md
-  - Screenshots: screenshots/gallery.md
-
-markdown_extensions:
-  - attr_list
-  - md_in_html
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
+  - Architecture:
+    - WASM Extensions: adr/001-wasm-extensions.md
+    - PostGIS over Neo4j: adr/002-postgis-over-neo4j.md
+    - Microservices: adr/003-microservices-over-monolith.md
+  - Reference:
+    - API Reference: api-reference.md
+    - Versions: VERSIONS.md
+    - Benchmarks: benchmarks.md
+    - Security: security.md
+    - C2 Types: c2-types/overview.md
+    - Scenario: scenario.md
+    - FAQ: faq.md
+    - Glossary: glossary.md
+    - Screenshots: screenshots/gallery.md
 
 extra:
   social:
