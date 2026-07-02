@@ -1,5 +1,14 @@
 # API Reference
 
+## Live API Playground
+
+<a href="http://localhost:3226/swagger-ui/" target="_blank" style="display: inline-block; padding: 12px 24px; background: #6366f1; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">🔌 Open Swagger UI →</a>
+
+Or visit [http://localhost:3226/swagger-ui/](http://localhost:3226/swagger-ui/)
+
+---
+
+
 The Furia platform exposes its capabilities through REST APIs.
 The primary entry point is the **interop-gateway** at port 3226,
 which provides a Swagger UI for interactive exploration.

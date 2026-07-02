@@ -27,7 +27,7 @@ nav:
   - C2 Types:
     - Overview: c2-types/overview.md
     - Counter-UAS: c2-types/c-uas.md
-    - All 25 Profiles: https://durandal-robotics.github.io/furia-docs/c2-types/overview/
+    - All Profiles: c2-types/overview.md
   - Integrations:
     - ATAK: integrations/atak.md
     - SAPIENT: integrations/sapient.md
@@ -39,7 +39,7 @@ nav:
   - Benchmarks: benchmarks.md
   - API Reference: api-reference.md
   - Security: security.md
-  - API Playground: https://durandal-robotics.github.io/furia-docs/api-reference/#swagger-ui
+
   - Developer Guide:
     - Building Your Own C2: developer-guide/building-your-own-c2.md
     - SDK Reference: SDK.md
