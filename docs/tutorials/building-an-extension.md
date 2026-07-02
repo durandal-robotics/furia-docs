@@ -262,3 +262,117 @@ cargo test -p pipeline-e2e
 - [ ] Unit tests for core logic
 - [ ] Ed25519 signing before publishing
 - [ ] Profile manifest for easy installation
+---
+
+## Version Compatibility
+
+Every extension declares its required SDK version in `furia-mod.toml`:
+
+```toml
+[sdk]
+min_version = "0.1.0"
+```
+
+The marketplace exposes a compatibility endpoint:
+
+```bash
+curl http://localhost:3030/api/v1/modules/compatibility
+```
+
+```json
+{
+  "sdk_version": "0.2.0",
+  "total_extensions": 98,
+  "compatibility_matrix": {
+    "0.1.0": "current"
+  }
+}
+```
+
+The module loader checks SDK compatibility on install. Mismatches are
+warned but not blocked — extensions may still work if the ABI hasn't
+changed.
+
+### Version Matrix
+
+| SDK Version | Status | Breaking Changes |
+|------------|--------|-----------------|
+| 0.1.0 | Current | — |
+| 0.2.0 | Planned | provider_call ABI stabilization |
+
+## Multi-Language Support
+
+Extensions can be written in any language that compiles to WASM.
+The `provider_call` ABI is language-agnostic — it passes JSON strings
+through a standard C ABI interface.
+
+### C ABI
+
+The runtime looks for these exports in the WASM module:
+
+```c
+// Required: memory for data exchange
+(memory (export "memory") 1)
+
+// Optional: lifecycle hooks
+int32_t provider_init(int32_t config_ptr, int32_t config_len);
+int32_t provider_tick(int32_t state_ptr, int32_t state_len);
+
+// REQUIRED: generic method dispatch
+int32_t provider_call(
+    int32_t method_ptr,    // pointer to method name string
+    int32_t method_len,    // length of method name
+    int32_t args_ptr,      // pointer to JSON args
+    int32_t args_len       // length of JSON args
+);
+
+// Optional: health
+int32_t provider_health();
+```
+
+### Language Examples
+
+**C/C++:**
+```c
+__attribute__((export_name("provider_call")))
+int provider_call(int method_ptr, int method_len, int args_ptr, int args_len) {
+    // Read method name and args from WASM memory
+    // Return JSON result via output pointer at offset 0
+    return 0;
+}
+```
+
+**Zig:**
+```zig
+export fn provider_call(method_ptr: i32, method_len: i32, args_ptr: i32, args_len: i32) i32 {
+    return 0;
+}
+```
+
+**Go (with TinyGo):**
+```go
+//export provider_call
+func providerCall(methodPtr, methodLen, argsPtr, argsLen int32) int32 {
+    return 0
+}
+```
+
+### Data Exchange Protocol
+
+Arguments and results are JSON-encoded and exchanged through the
+module's linear memory:
+
+```
+Input:
+  offset 4096: method name (UTF-8)
+  offset 8192: JSON arguments
+
+Output:
+  offset 0:    8-byte u64 pointer to result
+  offset 8:    4-byte u32 result length
+  result data: JSON-encoded at [pointer, pointer+length]
+
+Return value:
+  0 = success
+  non-zero = error code
+```
