@@ -1,21 +1,89 @@
 # Getting Started
 
-Choose your path based on what you want to do.
+## Don't Be Overwhelmed by "152 Services"
 
-## 🚀 I Want to Run a C2 System
+You don't need 152 services. You need **3**.
 
-### Option 1: One-Command Setup (macOS)
+Furia has 152 services because it can generate C2 systems for **25 different
+mission types** (C-UAS, C4ISR HQ, Frontline, ISR, MUM-T, maritime, etc.).
+Each mission type uses a different combination. You only run the services
+for YOUR mission.
+
+## Tiered Approach — Start Small, Scale Up
+
+### 🟢 Tier 1: Core C2 (3 services, 5 minutes)
+
+The absolute minimum: API gateway + extension system. No Postgres needed.
 
 ```bash
 git clone https://github.com/vlordier/furia-control.git
 cd furia-control
 just setup
+
+# See what's running:
+open http://localhost:3226/swagger-ui/   # API Gateway (23 endpoints)
+open http://localhost:3030/api/v1/search?q=*  # Marketplace (98 modules)
 ```
 
-This clones furia-core, builds the gateway, starts Postgres (or falls back to
-in-memory mode), and launches the API. Open `http://localhost:3226/swagger-ui/`.
+| Service | Port | Purpose |
+|---------|------|---------|
+| `interop-gateway` | 3226 | API, Swagger, CoT, ATAK, STANAG |
+| `furia-market-server` | 3030 | Extension registry, search, publish |
+| `furia-module-loader` | 3031 | WASM sandbox, module lifecycle |
 
-### Option 2: Desktop App (macOS DMG)
+**What you can do with 3 services:**
+- Browse the API documentation (Swagger UI)
+- Query the marketplace for extensions
+- Install and load WASM modules
+- Start building your own extension
+
+**No Postgres needed.** Runs in memory mode (`FURIA_STORAGE_DRIVER=memory`).
+
+### 🟡 Tier 2: C4ISR HQ (+4 services, 10 minutes)
+
+Add persistence, mission planning, and IHL gating.
+
+```bash
+export DATABASE_URL=postgres://furia:furia@localhost:5432/furia-c4isr
+just postgres
+cargo run --release -p mission-orchestrator &
+cargo run --release -p policy-service &
+cargo run --release -p military-messaging &
+```
+
+| Service | Port | Purpose |
+|---------|------|---------|
+| `postgis` | 5432 | PostgreSQL + PostGIS |
+| `mission-orchestrator` | 3003 | Mission lifecycle, persistence |
+| `policy-service` | 3004 | IHL gating, ROE enforcement |
+| `military-messaging` | 3380 | SitRep, OPORD, MEDEVAC 9-line |
+
+**What you can now do:**
+- Create missions that persist across restarts
+- Enforce ROE with IHL gating
+- Send and receive C2 messages
+- Track mission history with BDA chains
+
+### 🔴 Tier 3: Full Platform (All 152 services)
+
+Install a C2 profile to activate the right services for your mission.
+
+```bash
+# Counter-UAS
+cargo run --release -p furia-market -- install profile-c-uas
+
+# Or C4ISR Headquarters
+cargo run --release -p furia-market -- install profile-furia-hq
+
+# Or Tactical Frontline
+cargo run --release -p furia-market -- install profile-furia-frontline
+```
+
+Each profile activates exactly the services you need — not all 152.
+
+## Other Quickstart Paths
+
+### Desktop App (macOS DMG)
 
 ```bash
 cd furia-control
@@ -23,48 +91,30 @@ scripts/build-dmg.sh
 open FuriaC4ISR.dmg
 ```
 
-### Option 3: Docker Compose
+### Docker Compose
 
 ```bash
 docker compose -f deploy/full-stack/docker-compose.yml up -d
 ```
 
-## 🔧 I Want to Build an Extension
+## Build an Extension
 
 ```bash
-# Install prerequisites
-cargo install furia-market
-
-# Scaffold a new extension
-furia-market dev my-custom-policy
-
-# Implement an SDK trait (edit src/lib.rs)
 # See: docs/tutorials/building-an-extension.md
-
-# Publish
-furia-market publish --sign my-custom-policy/
+furia-market dev my-extension
 ```
 
-## 📚 I Want to Learn the Architecture
+## Learn More
 
 - [Architecture Overview](developer-guide/building-your-own-c2.md)
 - [SDK Reference](SDK.md)
 - [Extension Catalog](extensions/catalog.md)
 - [C2 Profiles](c2-types/overview.md)
+- [Troubleshooting](developer-guide/troubleshooting.md)
 
-## ❓ I Have Questions
+## Naming
 
-- [Troubleshooting Guide](developer-guide/troubleshooting.md)
-- GitHub Issues: https://github.com/vlordier/furia-control/issues
-
-## Naming Conventions
-
-The codebase uses two naming prefixes:
-
-| Prefix | Meaning | Examples |
-|--------|---------|---------|
-| `furia-` | **Current** SDK crates and tools | `furia-sdk`, `furia-market`, `furia-graph` |
-| `durandal-` | **Legacy** domain crates (gradually migrating) | `durandal-bda`, `durandal-iff`, `durandal-medevac` |
-
-Both work identically. New crates use `furia-`, existing domain crates keep
-`durandal-` for now. They're interchangeable at the SDK trait level.
+| Prefix | Meaning |
+|--------|---------|
+| `furia-` | Current SDK crates and tools |
+| `durandal-` | Legacy domain crates (gradually migrating) |
