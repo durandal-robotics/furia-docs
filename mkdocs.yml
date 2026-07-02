@@ -57,6 +57,9 @@ nav:
     - Threat Scorer: extensions/threat-scorer.md
     - Decision Tree: extensions/decision-tree.md
     - Ui Plugin: extensions/ui-plugin.md
+  - Scenario: scenario.md
+  - FAQ: faq.md
+  - Glossary: glossary.md
   - Screenshots: screenshots/gallery.md
 
 markdown_extensions:
