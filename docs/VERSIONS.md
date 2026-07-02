@@ -1,41 +1,64 @@
-# Versions
+# Platform Statistics
 
 Furia C2 Platform **v0.2.0**
 
-## SDK Traits
+## Overview
 
-| Trait | Methods | Source |
+| Metric | Value |
+|--------|-------|
+| **Services** | 151 |
+| **Crates** | 111 |
+| **Extension manifests** | 64 |
+| **C2 profiles** | 25 |
+| **Marketplace seeds** | 145 |
+| **Workspace version** | v0.2.0 |
+
+## SDK Traits (22)
+
+| Trait | Purpose | Source |
 |-------|---------|--------|
-| `AcousticProvider` | init, configure_sonar, tick_acoustics | `acoustic.rs` |
-| `AirspaceManager` | init, add_volume, check | `airspace_manager.rs` |
-| `AssessmentEngine` | assess, version, health | `assessor.rs` |
-| `CbrnProvider` | init, release_agent, tick_dispersion | `cbrn.rs` |
-| `CivilianDensityProvider` | init, tick_population, region_density | `civilian_density.rs` |
-| `DecisionTreeProvider` | train, evaluate, version | `decision_tree.rs` |
-| `DecompositionStrategy` | decompose, score_coa | `decomposition.rs` |
-| `DispatchAdapter` | dispatch, validate_target | `dispatch.rs` |
-| `EWSimProvider` | init, configure_jammer, tick_jammers | `ew_sim.rs` |
-| `EngagementPlanner` | init, plan, approve | `engagement_planner.rs` |
-| `ExportAdapter` | export, supported_formats, version | `export.rs` |
-| `FusionEngine` | correlate, version, health | `fusion.rs` |
-| `IntentProvider` | parse_intent, version, health | `intent.rs` |
-| `InterceptorPairingProvider` | init, pair, batch_pair | `interceptor_pairing.rs` |
-| `KillChainOrchestrator` | init, process, authorize | `kill_chain.rs` |
-| `LogisticsProvider` | init, tick_consumption, vehicle_state | `logistics.rs` |
-| `PolicyProvider` | evaluate, intent_feedback, version | `policy.rs` |
-| `SensorAdapter` | ingest, classify | `sensor.rs` |
-| `SimulationProvider` | init, tick, entity_state | `simulation.rs` |
-| `TerrainAnalyst` | init, mobility_class, assess_route | `terrain.rs` |
-| `ThreatScorer` | init, score, batch_score | `threat_scorer.rs` |
-| `UiPlugin` | render, metadata, version | `ui.rs` |
+| `AirspaceManager` | Airspace deconfliction | `furia-sdk/src/airspacemanager.rs` |
+| `AssessmentEngine` | BDA, damage scoring | `furia-sdk/src/assessment.rs` |
+| `DecompositionStrategy` | Intent-to-task compilation | `furia-sdk/src/decompositionstrategy.rs` |
+| `DispatchAdapter` | Action dispatch, protocol bridging | `furia-sdk/src/dispatch.rs` |
+| `EngagementPlanner` | Multi-platform engagement coordination | `furia-sdk/src/engagementplanner.rs` |
+| `FusionProvider` | Multi-source sensor fusion | `furia-sdk/src/fusion.rs` |
+| `LogisticsProvider` | Supply chain, sustainment | `furia-sdk/src/logistics.rs` |
+| `PolicyProvider` | IHL gating, ROE enforcement | `furia-sdk/src/policy.rs` |
+| `SensorAdapter` | Track ingestion, classification | `furia-sdk/src/sensor.rs` |
+| `SimulationProvider` | Entity simulation, tick loops | `furia-sdk/src/simulation.rs` |
 
 ## Service Ports
 
 | Service | Port |
 |---------|------|
-| `military-messaging` | 3380 |
-| `mission-orchestrator` | 3003 |
-| `sapient-adapter` | 3395 |
-| `support-infrastructure` | 3000 |
-| `voice-assistant` | 3390 |
-| ... (5 total) | ... |
+| `abort-engine` | 3156 |
+| `air-defense-counter-air` | 3232 |
+| `airspace-service` | 3152 |
+| `all-source-intel-fusion` | 3161 |
+| `auth-proxy` | 3105 |
+| `bandwidth-aware-delivery` | 3380 |
+| `battle-rhythm-service` | 3129 |
+| `bda-service` | 3102 |
+| `bff-service` | 3470 |
+| `cas-service` | 3116 |
+| `ccir-engine` | 3117 |
+| `civil-infrastructure` | 3472 |
+| `civil-services` | 3499 |
+| `coalition-partner-cps` | 3332 |
+| `cognitive-load-management` | 3341 |
+| `collection-management` | 3143 |
+| `comm-sim-feasibility-sidecar` | 3372 |
+| `command-dashboard` | 3460 |
+| `commander-decision-cycle` | 3365 |
+| `commander-interlock-hud` | 3396 |
+| ... (130 with detected ports) | ... |
+
+## CI Status
+
+| Workflow | Status |
+|----------|--------|
+| CI Lint | [![CI](https://github.com/vlordier/furia-control/actions/workflows/ci.yml/badge.svg)](https://github.com/vlordier/furia-control/actions/workflows/ci.yml) |
+| Fast Check | [![Fast Check](https://github.com/vlordier/furia-control/actions/workflows/fast-check.yml/badge.svg)](https://github.com/vlordier/furia-control/actions/workflows/fast-check.yml) |
+| Full C2 Build | [![Full C2 Build](https://github.com/vlordier/furia-control/actions/workflows/full-c2-build.yml/badge.svg)](https://github.com/vlordier/furia-control/actions/workflows/full-c2-build.yml) |
+| Docs | [![Docs](https://github.com/durandal-robotics/furia-docs/actions/workflows/deploy.yml/badge.svg)](https://github.com/durandal-robotics/furia-docs/actions/workflows/deploy.yml) |

@@ -25,6 +25,7 @@ nav:
   - Developer Guide:
     - Building Your Own C2: developer-guide/building-your-own-c2.md
     - SDK Reference: SDK.md
+    - Service Port Map: developer-guide/service-ports.md
   - Platform:
     - Versions: VERSIONS.md
   - UI Components:
