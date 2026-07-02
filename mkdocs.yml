@@ -19,6 +19,7 @@ theme:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - C2 Templates: c2-templates.md
   - C2 Types:
     - Overview: c2-types/overview.md
     - Counter-UAS: c2-types/c-uas.md
