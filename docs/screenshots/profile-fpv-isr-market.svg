@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="304">
+  <rect width="800" height="304" fill="#1e1e1e"/>
+  <text x="20" y="30" fill="#569cd6" font-size="14" font-family="monospace">profile-fpv-isr-market</text>
+  <text x="20" y="50" fill="#888" font-size="10" font-family="monospace">http://127.0.0.1:3030/api/v1/search?q=profile-fpv-isr</text>
+  <line x1="20" y1="60" x2="780" y2="60" stroke="#333" stroke-width="1"/>
+  <text x="20" y="80" fill="#d4d4d4" font-size="11" font-family="monospace">{</text>
+  <text x="20" y="94" fill="#ce9178" font-size="11" font-family="monospace">  "total": 1,</text>
+  <text x="20" y="108" fill="#ce9178" font-size="11" font-family="monospace">  "modules": [</text>
+  <text x="20" y="122" fill="#d4d4d4" font-size="11" font-family="monospace">    {</text>
+  <text x="20" y="136" fill="#ce9178" font-size="11" font-family="monospace">      "name": "profile-fpv-isr",</text>
+  <text x="20" y="150" fill="#ce9178" font-size="11" font-family="monospace">      "publisher": "Furia Core Team",</text>
+  <text x="20" y="164" fill="#ce9178" font-size="11" font-family="monospace">      "description": "First-Person View drone ISR profile \u2014 PNT/GNSS-denied navigation, sensor management, geospatial analysis, BDA, mission templates",</text>
+  <text x="20" y="178" fill="#ce9178" font-size="11" font-family="monospace">      "latest_version": "0.1.0",</text>
+  <text x="20" y="192" fill="#ce9178" font-size="11" font-family="monospace">      "traits": [</text>
+  <text x="20" y="206" fill="#ce9178" font-size="11" font-family="monospace">        "meta",</text>
+  <text x="20" y="220" fill="#ce9178" font-size="11" font-family="monospace">        "profile",</text>
+  <text x="20" y="234" fill="#ce9178" font-size="11" font-family="monospace">        "isr"</text>
+  <text x="20" y="248" fill="#d4d4d4" font-size="11" font-family="monospace">      ]</text>
+  <text x="20" y="262" fill="#d4d4d4" font-size="11" font-family="monospace">    }</text>
+  <text x="20" y="276" fill="#d4d4d4" font-size="11" font-family="monospace">  ]</text>
+  <text x="20" y="290" fill="#d4d4d4" font-size="11" font-family="monospace">}</text>
+</svg>

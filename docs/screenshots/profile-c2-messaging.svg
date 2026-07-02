@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
-  <rect width="800" height="600" fill="#1e1e1e"/>
-  <text x="400" y="280" text-anchor="middle" fill="#888" font-size="24" font-family="monospace">
-    Screenshot: profile-c2-messaging
-  </text>
-  <text x="400" y="320" text-anchor="middle" fill="#555" font-size="14" font-family="monospace">
-    Start the related service to capture live
-  </text>
-</svg>

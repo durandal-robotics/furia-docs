@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000">
+  <rect width="800" height="1000" fill="#1e1e1e"/>
+  <text x="20" y="30" fill="#569cd6" font-size="14" font-family="monospace">marketplace-search-all</text>
+  <text x="20" y="50" fill="#888" font-size="10" font-family="monospace">http://127.0.0.1:3030/api/v1/search?q=*</text>
+  <line x1="20" y1="60" x2="780" y2="60" stroke="#333" stroke-width="1"/>
+  <text x="20" y="80" fill="#d4d4d4" font-size="11" font-family="monospace">{</text>
+  <text x="20" y="94" fill="#ce9178" font-size="11" font-family="monospace">  "total": 98,</text>
+  <text x="20" y="108" fill="#ce9178" font-size="11" font-family="monospace">  "modules": [</text>
+  <text x="20" y="122" fill="#d4d4d4" font-size="11" font-family="monospace">    {</text>
+  <text x="20" y="136" fill="#ce9178" font-size="11" font-family="monospace">      "name": "profile-fires-bda",</text>
+  <text x="20" y="150" fill="#ce9178" font-size="11" font-family="monospace">      "publisher": "Furia Core Team",</text>
+  <text x="20" y="164" fill="#ce9178" font-size="11" font-family="monospace">      "description": "Battle Damage Assessment \u2014 damage scoring, intent BDA, causal BDA",</text>
+  <text x="20" y="178" fill="#ce9178" font-size="11" font-family="monospace">      "latest_version": "0.1.0",</text>
+  <text x="20" y="192" fill="#ce9178" font-size="11" font-family="monospace">      "traits": [</text>
+  <text x="20" y="206" fill="#ce9178" font-size="11" font-family="monospace">        "meta",</text>
+  <text x="20" y="220" fill="#ce9178" font-size="11" font-family="monospace">        "profile",</text>
+  <text x="20" y="234" fill="#ce9178" font-size="11" font-family="monospace">        "fires",</text>
+  <text x="20" y="248" fill="#ce9178" font-size="11" font-family="monospace">        "bda"</text>
+  <text x="20" y="262" fill="#d4d4d4" font-size="11" font-family="monospace">      ]</text>
+  <text x="20" y="276" fill="#d4d4d4" font-size="11" font-family="monospace">    },</text>
+  <text x="20" y="290" fill="#d4d4d4" font-size="11" font-family="monospace">    {</text>
+  <text x="20" y="304" fill="#ce9178" font-size="11" font-family="monospace">      "name": "durandal-csar",</text>
+  <text x="20" y="318" fill="#ce9178" font-size="11" font-family="monospace">      "publisher": "Furia Core Team",</text>
+  <text x="20" y="332" fill="#ce9178" font-size="11" font-family="monospace">      "description": "CSAR / Personnel Recovery domain models \u2014 beacon tracking, extraction planning, recovery vehicle scoring, survival assistance",</text>
+  <text x="20" y="346" fill="#ce9178" font-size="11" font-family="monospace">      "latest_version": "0.1.0",</text>
+  <text x="20" y="360" fill="#ce9178" font-size="11" font-family="monospace">      "traits": [</text>
+  <text x="20" y="374" fill="#ce9178" font-size="11" font-family="monospace">        "assessment"</text>
+  <text x="20" y="388" fill="#d4d4d4" font-size="11" font-family="monospace">      ]</text>
+  <text x="20" y="402" fill="#d4d4d4" font-size="11" font-family="monospace">    },</text>
+  <text x="20" y="416" fill="#d4d4d4" font-size="11" font-family="monospace">    {</text>
+  <text x="20" y="430" fill="#ce9178" font-size="11" font-family="monospace">      "name": "durandal-bda",</text>
+  <text x="20" y="444" fill="#ce9178" font-size="11" font-family="monospace">      "publisher": "Furia Core Team",</text>
+  <text x="20" y="458" fill="#ce9178" font-size="11" font-family="monospace">      "description": "Battle Damage Assessment domain model \u2014 damage scoring, change detection, confidence tiers",</text>
+  <text x="20" y="472" fill="#ce9178" font-size="11" font-family="monospace">      "latest_version": "0.1.0",</text>
+  <text x="20" y="486" fill="#ce9178" font-size="11" font-family="monospace">      "traits": [</text>
+  <text x="20" y="500" fill="#ce9178" font-size="11" font-family="monospace">        "assessment"</text>
+  <text x="20" y="514" fill="#d4d4d4" font-size="11" font-family="monospace">      ]</text>
+  <text x="20" y="528" fill="#d4d4d4" font-size="11" font-family="monospace">    },</text>
+  <text x="20" y="542" fill="#d4d4d4" font-size="11" font-family="monospace">    {</text>
+  <text x="20" y="556" fill="#ce9178" font-size="11" font-family="monospace">      "name": "durandal-cas",</text>
+  <text x="20" y="570" fill="#ce9178" font-size="11" font-family="monospace">      "publisher": "Furia Core Team",</text>
+  <text x="20" y="584" fill="#ce9178" font-size="11" font-family="monospace">      "description": "CAS (Close Air Support) domain models \u2014 9-line brief, danger-close calc, FSCL management, terminal attack control",</text>
+  <text x="20" y="598" fill="#ce9178" font-size="11" font-family="monospace">      "latest_version": "0.1.0",</text>
+  <text x="20" y="612" fill="#ce9178" font-size="11" font-family="monospace">      "traits": [</text>
+  <text x="20" y="626" fill="#ce9178" font-size="11" font-family="monospace">        "engagement-planner"</text>
+  <text x="20" y="640" fill="#d4d4d4" font-size="11" font-family="monospace">      ]</text>
+  <text x="20" y="654" fill="#d4d4d4" font-size="11" font-family="monospace">    },</text>
+  <text x="20" y="668" fill="#d4d4d4" font-size="11" font-family="monospace">    {</text>
+  <text x="20" y="682" fill="#ce9178" font-size="11" font-family="monospace">      "name": "profile-c2-messaging",</text>
+  <text x="20" y="696" fill="#ce9178" font-size="11" font-family="monospace">      "publisher": "Furia Core Team",</text>
+  <text x="20" y="710" fill="#ce9178" font-size="11" font-family="monospace">      "description": "Structured C2 messaging \u2014 SitRep, OPORD, FRAGO, INTREP, MEDEVAC 9-line",</text>
+  <text x="20" y="724" fill="#ce9178" font-size="11" font-family="monospace">      "latest_version": "0.1.0",</text>
+  <text x="20" y="738" fill="#ce9178" font-size="11" font-family="monospace">      "traits": [</text>
+  <text x="20" y="752" fill="#ce9178" font-size="11" font-family="monospace">        "meta",</text>
+  <text x="20" y="766" fill="#ce9178" font-size="11" font-family="monospace">        "profile",</text>
+  <text x="20" y="780" fill="#ce9178" font-size="11" font-family="monospace">        "messaging"</text>
+  <text x="20" y="794" fill="#d4d4d4" font-size="11" font-family="monospace">      ]</text>
+  <text x="20" y="808" fill="#d4d4d4" font-size="11" font-family="monospace">    },</text>
+  <text x="20" y="822" fill="#d4d4d4" font-size="11" font-family="monospace">    {</text>
+  <text x="20" y="836" fill="#ce9178" font-size="11" font-family="monospace">      "name": "furia-builtin-basic-decomposition",</text>
+  <text x="20" y="850" fill="#ce9178" font-size="11" font-family="monospace">      "publisher": "Furia Core Team",</text>
+  <text x="20" y="864" fill="#ce9178" font-size="11" font-family="monospace">      "description": "Basic mission decomposition into sub-missions using template patterns",</text>
+  <text x="20" y="878" fill="#ce9178" font-size="11" font-family="monospace">      "latest_version": "0.1.0",</text>
+  <text x="20" y="892" fill="#ce9178" font-size="11" font-family="monospace">      "traits": [</text>
+  <text x="20" y="906" fill="#ce9178" font-size="11" font-family="monospace">        "decomposition",</text>
+  <text x="20" y="920" fill="#888" font-size="11" font-family="monospace">... 912 more lines</text>
+</svg>
