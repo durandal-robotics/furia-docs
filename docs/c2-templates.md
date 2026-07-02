@@ -185,25 +185,25 @@ furia-market install profile-env-denied
 
 Each template has a marketplace profile page showing its available extensions:
 
-![C2 HQ](../screenshots/template-hq.png)
+![C2 HQ](screenshots/template-hq.png)
 *C2 Headquarters — 7 services, COP, intel, planning, IHL, messaging*
 
-![C2 Frontline](../screenshots/template-frontline.png)
+![C2 Frontline](screenshots/template-frontline.png)
 *C2 Frontline — 4 services, BFT, MEDEVAC, route analysis*
 
-![C2 Edge](../screenshots/template-edge.png)
+![C2 Edge](screenshots/template-edge.png)
 *C2 Edge — 4 services, lightweight vehicle C2, no Postgres needed*
 
-![C2 Maritime](../screenshots/template-maritime.png)
+![C2 Maritime](screenshots/template-maritime.png)
 *C2 Maritime — 3 services, vessel tracking, BDA, routing*
 
-![C2 Airborne](../screenshots/template-airborne.png)
+![C2 Airborne](screenshots/template-airborne.png)
 *C2 Airborne — 3 services, MUM-T, airspace, IFF*
 
-![C2 Intelligence](../screenshots/template-intel.png)
+![C2 Intelligence](screenshots/template-intel.png)
 *C2 Intelligence — 5 services, all-source fusion, cyber, cross-cue*
 
-![C2 Messaging](../screenshots/template-messaging.png)
+![C2 Messaging](screenshots/template-messaging.png)
 *C2 Messaging — 1 service, SitRep, OPORD, MEDEVAC 9-line*
 
 ## Comparison
