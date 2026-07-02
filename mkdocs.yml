@@ -18,6 +18,23 @@ nav:
 - C2 Types:
   - Overview: c2-types/overview.md
   - Counter-UAS: c2-types/c-uas.md
+- Extensions:
+  - Catalog: extensions/catalog.md
+  - Airspace Manager: extensions/airspace-manager.md
+  - Assessment: extensions/assessment.md
+  - Decision Tree: extensions/decision-tree.md
+  - Decomposition: extensions/decomposition.md
+  - Dispatch: extensions/dispatch.md
+  - Engagement Planner: extensions/engagement-planner.md
+  - Ew Sim: extensions/ew-sim.md
+  - Fusion: extensions/fusion.md
+  - Logistics: extensions/logistics.md
+  - Policy: extensions/policy.md
+  - Sensor: extensions/sensor.md
+  - Simulation: extensions/simulation.md
+  - Terrain: extensions/terrain.md
+  - Threat Scorer: extensions/threat-scorer.md
+  - Ui Plugin: extensions/ui-plugin.md
 - Screenshots: screenshots/gallery.md
 - Extensions: https://durandal-robotics.github.io/furia-docs/extensions/
 repo_url: https://github.com/durandal-robotics/furia-docs
