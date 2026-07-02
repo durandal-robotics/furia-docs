@@ -24,6 +24,9 @@ nav:
     - All 25 Profiles: https://durandal-robotics.github.io/furia-docs/c2-types/overview/
   - Developer Guide:
     - Building Your Own C2: developer-guide/building-your-own-c2.md
+    - SDK Reference: SDK.md
+  - Platform:
+    - Versions: VERSIONS.md
   - UI Components:
     - App Layout & Shells: ui-components/overview.md
   - Tutorials:
