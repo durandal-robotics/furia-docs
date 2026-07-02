@@ -1,55 +1,64 @@
-edit_uri: edit/main/docs/
-extra:
-  social:
-  - icon: fontawesome/brands/github
-    link: https://github.com/durandal-robotics/furia-docs
-markdown_extensions:
-- attr_list
-- md_in_html
-- admonition
-- pymdownx.details
-- pymdownx.superfences
-- pymdownx.tabbed:
-    alternate_style: true
-- pymdownx.tasklist:
-    custom_checkbox: true
-nav:
-- Home: index.md
-- C2 Types:
-  - Overview: c2-types/overview.md
-  - Counter-UAS: c2-types/c-uas.md
-- Extensions:
-  - Catalog: extensions/catalog.md
-  - Airspace Manager: extensions/airspace-manager.md
-  - Assessment: extensions/assessment.md
-  - Decision Tree: extensions/decision-tree.md
-  - Decomposition: extensions/decomposition.md
-  - Dispatch: extensions/dispatch.md
-  - Engagement Planner: extensions/engagement-planner.md
-  - Ew Sim: extensions/ew-sim.md
-  - Fusion: extensions/fusion.md
-  - Logistics: extensions/logistics.md
-  - Policy: extensions/policy.md
-  - Sensor: extensions/sensor.md
-  - Simulation: extensions/simulation.md
-  - Terrain: extensions/terrain.md
-  - Threat Scorer: extensions/threat-scorer.md
-  - Ui Plugin: extensions/ui-plugin.md
-- Screenshots: screenshots/gallery.md
-- Extensions: https://durandal-robotics.github.io/furia-docs/extensions/
-repo_url: https://github.com/durandal-robotics/furia-docs
-site_description: Furia C2 Platform — generates C2 systems for any mission. 25 C2
-  types, 63 extensions, 152 services
 site_name: Furia C2 Platform
+site_description: Furia C2 Platform — generates C2 systems for any mission. 25 C2 types, 63 extensions, 152 services
 site_url: https://durandal-robotics.github.io/furia-docs/
+repo_url: https://github.com/durandal-robotics/furia-docs
+edit_uri: edit/main/docs/
+
 theme:
-  features:
-  - navigation.tabs
-  - navigation.sections
-  - navigation.expand
-  - content.code.copy
-  - content.action.edit
   name: material
   palette:
-    accent: blue
     primary: indigo
+    accent: blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+    - content.action.edit
+
+nav:
+  - Home: index.md
+  - C2 Types:
+    - Overview: c2-types/overview.md
+    - Counter-UAS: c2-types/c-uas.md
+    - All 25 Profiles: https://durandal-robotics.github.io/furia-docs/c2-types/overview/
+  - Developer Guide:
+    - Building Your Own C2: developer-guide/building-your-own-c2.md
+  - UI Components:
+    - App Layout & Shells: ui-components/overview.md
+  - Tutorials:
+    - Building an Extension: tutorials/building-an-extension.md
+  - Extensions:
+    - Catalog: extensions/catalog.md
+    - Simulation: extensions/simulation.md
+    - Sensor: extensions/sensor.md
+    - Assessment: extensions/assessment.md
+    - Policy: extensions/policy.md
+    - Decomposition: extensions/decomposition.md
+    - Dispatch: extensions/dispatch.md
+    - Fusion: extensions/fusion.md
+    - Logistics: extensions/logistics.md
+    - Airspace Manager: extensions/airspace-manager.md
+    - Engagement Planner: extensions/engagement-planner.md
+    - Ew Sim: extensions/ew-sim.md
+    - Terrain: extensions/terrain.md
+    - Threat Scorer: extensions/threat-scorer.md
+    - Decision Tree: extensions/decision-tree.md
+    - Ui Plugin: extensions/ui-plugin.md
+  - Screenshots: screenshots/gallery.md
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/durandal-robotics/furia-docs
