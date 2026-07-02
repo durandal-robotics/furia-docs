@@ -16,33 +16,33 @@ Generated automatically by CI every build.
 
 ## Marketplace
 
-![All Extensions](../screenshots/marketplace-search-all.svg)
+![All Extensions](../screenshots/marketplace-search-all.png)
 *98 modules in the marketplace (crate seeds + profiles)*
 
 ![All Extensions](../screenshots/marketplace-search.png)
 *Marketplace search — all modules listed with names and descriptions*
 
-![Simulation Extensions](../screenshots/marketplace-simulation-extensions.svg)
+![Simulation Extensions](../screenshots/marketplace-simulation-extensions.png)
 *Filter by kind: 20+ simulation extensions*
 
-![Policy Extensions](../screenshots/marketplace-policy-extensions.svg)
+![Policy Extensions](../screenshots/marketplace-policy-extensions.png)
 *Filter by kind: 10+ policy extensions*
 
-![Sensor Extensions](../screenshots/marketplace-sensor-extensions.svg)
+![Sensor Extensions](../screenshots/marketplace-sensor-extensions.png)
 *Filter by kind: 8+ sensor extensions*
 
 ## Extension Details
 
-![IHL Module](../screenshots/module-ihl-detail.svg)
+![IHL Module](../screenshots/marketplace-ihl-detail.png)
 *furia-builtin-safe-ihl — policy, IHL safety gating*
 
-![BDA Module](../screenshots/module-bda-detail.svg)
+![BDA Module](../screenshots/marketplace-bda-detail.png)
 *durandal-bda — assessment, battle damage scoring*
 
-![Voice Module](../screenshots/module-voice-detail.svg)
+![Voice Module](../screenshots/marketplace-voice-detail.png)
 *durandal-voice-classifier — sensor, STT for C2 voice commands*
 
-![Graph Module](../screenshots/module-graph-detail.svg)
+![Graph Module](../screenshots/marketplace-graph-detail.png)
 *furia-graph — fusion, temporal entity graph*
 
 ![Module Detail](../screenshots/module-detail.png)
@@ -52,12 +52,12 @@ Generated automatically by CI every build.
 
 ### Counter-UAS (C-UAS)
 
-![C-UAS Profile](../screenshots/profile-c-uas-market.svg)
+![C-UAS Profile](../screenshots/marketplace-c-uas.png)
 *profile-c-uas — found in marketplace with 5 extension dependencies*
 
 ### C4ISR Headquarters
 
-![Furia HQ Profile](../screenshots/profile-furia-hq-market.svg)
+![Furia HQ Profile](../screenshots/marketplace-furia-hq.png)
 *profile-furia-hq — full HQ with COP, intel, planning, BDA*
 
 ![Furia HQ](../screenshots/profile-furia-hq.png)
@@ -65,45 +65,45 @@ Generated automatically by CI every build.
 
 ### Tactical Frontline
 
-![Frontline Profile](../screenshots/profile-furia-frontline-market.svg)
+![Frontline Profile](../screenshots/marketplace-furia-frontline.png)
 *profile-furia-frontline — dismounted C2 with BFT, MEDEVAC*
 
 ### FPV + ISR Reconnaissance
 
-![FPV ISR Profile](../screenshots/profile-fpv-isr-market.svg)
+![FPV ISR Profile](../screenshots/marketplace-fpv-isr.png)
 *profile-fpv-isr — single-operator drone ISR*
 
 ### Deep ISR Reconnaissance
 
-![Deep ISR Profile](../screenshots/profile-isr-deep-market.svg)
+![Deep ISR Profile](../screenshots/marketplace-isr-deep.png)
 *profile-isr-deep — multi-asset beyond-LOS reconnaissance*
 
 ### Search & Strike
 
-![Search & Strike Profile](../screenshots/profile-search-strike-market.svg)
+![Search & Strike Profile](../screenshots/marketplace-search-strike.png)
 *profile-search-strike — find and engage with IHL gating*
 
 ### Manned-Unmanned Teaming
 
-![MUM-T Profile](../screenshots/profile-mum-t-market.svg)
+![MUM-T Profile](../screenshots/marketplace-mum-t.png)
 *profile-mum-t — helicopter + UAV teaming*
 
 ### Ground Control Station
 
-![GCS Profile](../screenshots/profile-gs-like-market.svg)
+![GCS Profile](../screenshots/marketplace-ground-station.png)
 *profile-gs-like — full ground control station*
 
 ### Maritime Domain Awareness
 
-![Maritime Profile](../screenshots/profile-maritime-market.svg)
+![Maritime Profile](../screenshots/marketplace-maritime.png)
 *profile-maritime — vessel tracking, BDA, routing*
 
 ### C2 Messaging
 
-![Messaging Profile](../screenshots/profile-c2-messaging-market.svg)
+![Messaging Profile](../screenshots/marketplace-c2-messaging.png)
 *profile-c2-messaging — SitRep, OPORD, MEDEVAC*
 
-![Messaging Status](../screenshots/messaging-status.svg)
+![Messaging Status](../screenshots/messaging-status-ui.png)
 *Military messaging service health*
 
 ![Messaging Inbox](../screenshots/messaging-inbox.png)
