@@ -72,6 +72,10 @@ service combinations. All 25 profiles are tested in CI and available as a DMG.
 open FuriaC4ISR.dmg  # → drag to Applications
 
 # Or build from source
+# One-command setup
+just setup
+
+# Or step by step:
 ./scripts/build-dmg.sh
 ```
 
