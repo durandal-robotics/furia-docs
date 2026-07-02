@@ -6,167 +6,127 @@ how to create custom UIs.
 
 ## App Layout
 
+The application is organized into four main areas:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
-│ TopBar                                                    │
-│  [MAP] [MISSION] [MARKETPLACE] [TRAINING] [SETTINGS]    │
+│ TopBar — Profile-aware navigation tabs                   │
+│  [MAP] [MISSION] [MARKETPLACE] [TRAINING] [SETTINGS]     │
 ├────────┬────────────────────────────────────────────────┤
 │        │                                                │
-│ Sidebar│              Main Content                       │
-│ (Left) │         (COP, Plan, Market, etc.)              │
+│ Sidebar│              Main Content Area                  │
+│ (Left) │         (COP, Mission Plan, Market, etc.)      │
 │        │                                                │
 │ - Tracks│                                               │
 │ - Units │                                               │
 │ - Intel │              ┌──────────────────┐             │
-│ - BDA  │              │  Right Panel     │             │
-│        │              │  (Contextual)    │             │
-│        │              │                  │             │
-│        │              │  - Asset Detail  │             │
-│        │              │  - Track Info    │             │
-│        │              │  - Mission Plan  │             │
+│        │              │  Right Panel      │             │
+│        │              │  (Contextual)     │             │
+│        │              │                   │             │
+│        │              │  - Asset Detail   │             │
+│        │              │  - Track Info     │             │
+│        │              │  - Mission Plan   │             │
 │        │              └──────────────────┘             │
 ├────────┴────────────────────────────────────────────────┤
-│ StatusBar  [Profile: CUAS] [Formation: SOLO] [Health]   │
+│ StatusBar — C2 profile, formation mode, service health  │
 └─────────────────────────────────────────────────────────┘
 ```
 
-## Layout Structure
-
-The app is built around a **flexible layout system** that adapts
-to the selected C2 profile and formation template.
-
 ### TopBar
 
-The main navigation bar with profile-specific tabs:
-
-| Tab | Route | Available In |
-|-----|-------|--------------|
-| **MAP** | `/` | All profiles |
-| **MISSION** | `/mission` | HQ, Planning |
-| **MARKETPLACE** | `/marketplace` | All profiles |
-| **TRAINING** | `/training` | All profiles |
-| **SETTINGS** | `/app-settings` | All profiles |
-
-![TopBar](../screenshots/tauri-cop.png)
+| Tab | Route | Description |
+|-----|-------|-------------|
+| **MAP** | `/` | Common Operating Picture — main C2 view |
+| **MISSION** | `/mission` | Mission planning, COA development |
+| **MARKETPLACE** | `/marketplace` | Extension browser, search, install |
+| **TRAINING** | `/training` | Exercise mode with scenario controls |
+| **SETTINGS** | `/app-settings` | C2 profile, display, language |
 
 ### Sidebar (Left Panel)
 
-Contextual panel showing active tracks, units, and data:
-
-| View | Content |
-|------|---------|
-| COP | Active tracks, sensor feeds, formation nodes |
-| Intel | Intel reports, BDA assessments |
-| Planning | Mission timeline, COA options |
-| Marketplace | Module list, kind filter, search |
+| Section | Content |
+|---------|---------|
+| Tracks | Active sensor tracks, classification, confidence |
+| Units | Friendly force units with hierarchy, status |
+| Intel | Intelligence reports, BDA assessments |
+| BDA | Battle damage assessment summaries |
+| Formation | C2 formation members, roles, connectivity |
 
 ### Right Panel
 
-Dynamic panel that changes based on selection:
+The right panel is context-sensitive and changes based on selection:
 
-| Selection | Panel Content |
-|-----------|--------------|
-| Track | Position, velocity, classification, IFF |
-| Asset | Sensors, weapons, fuel state, health |
-| Mission | Tasks, timeline, assigned assets |
-| Module | Manifest, version, security, deps |
+| Selection | Panel Shows |
+|-----------|------------|
+| Track on map | Position, velocity, IFF, classification, sensor source |
+| Unit in sidebar | Unit details, sub-units, equipment, fuel state |
+| Intel report | Report detail, source, confidence, related tracks |
+| Mission task | Task status, assigned assets, timeline, location |
 
-## Shells (FuriaShell)
+### StatusBar
 
-The shell system determines the app's behavior based on the
-operator's role and formation template:
+Shows the active C2 profile, formation partition mode, and service health indicators.
+Color-coded: green = healthy, yellow = degraded, red = offline.
 
-| Shell | Route | Use Case |
-|-------|-------|----------|
+## Screenshots
+
+![Full COP View](../screenshots/tauri-cop-full.png)
+*Main C2 interface — map, tracks, sidebar, formation status*
+
+![Marketplace View](../screenshots/tauri-marketplace-view.png)
+*Extension marketplace — browse and install modules*
+
+![Mission View](../screenshots/tauri-mission-view.png)
+*Mission planning — COA development and task assignment*
+
+## Shell System
+
+The shell determines the app layout based on the operator's role:
+
+| Shell | Route | Layout |
+|-------|-------|--------|
 | `commander` | `/` | Full COP with all panels |
 | `rc` | `/rc` | Remote controller — video + telemetry |
 | `solo` | `/solo` | Single operator — focused map |
 | `training` | `/training` | Training mode with exercise controls |
 
-### Shell Selection by Template
-
-```typescript
-SOLO → solo shell:  '/solo'
-PAIR → commander shell: '/'
-TOC_3 → commander shell: '/'
-SITAWARE_HQ → commander shell: '/'
-FRONTLINE → commander shell: '/'
-```
+Shell is selected automatically from the C2 formation template.
 
 ## Entry Screen
 
-When the app starts, you choose a C2 formation template:
+When the app starts, you choose a template and role:
 
 ![Entry Screen](../screenshots/tauri-entry.png)
 
-| Template | Slots | Max RC | Use Case |
-|----------|-------|--------|----------|
-| **SOLO** | 1 operator | 2 | Single operator |
-| **PAIR** | Leader + RC | 4 | Two operator |
-| **TOC-3** | CMD + Intel + Plans | 6 | Small TOC |
-| **TOC-6** | 6 roles | 12 | Full TOC |
-| **FIRES CELL** | CMD + Fires | 8 | Fires coordination |
-| **C-UAS CELL** | CMD + CUAS + Sentinel | 8 | Counter-drone |
-| **SITAWARE HQ** | CMD + Intel + Plans + Liaison | 6 | C4ISR HQ |
-| **FRONTLINE** | Leader + Observer + RC | 4 | Tactical C2 |
+| Template | Slots | Roles |
+|----------|-------|-------|
+| **SOLO** | 1 | Single operator |
+| **PAIR** | 2 | Leader + RC operator |
+| **TOC-3** | 3 | Cmd + Intel + Plans |
+| **TOC-6** | 6 | All C2 roles |
+| **C-UAS CELL** | 3 | Cmd + CUAS + Sentinel |
+| **SITAWARE HQ** | 5 | Cmd + Intel + Plans + Liaison + Coord |
+| **FRONTLINE** | 4 | Leader + Observer + RC + Payload |
 
-## C2 Profile Integration
+## Profile-Driven UI
 
-The `c2ProfileStore` drives UI defaults based on the active profile:
+The `c2ProfileStore` automatically configures the UI based on the active C2 profile:
 
 ```typescript
-// profile === 'cuas'
-// → Auto-selects C-UAS_CELL template
-// → Sets role to 'cuas'
-// → Sets mission thread to 'CUAS_DEFENSIVE'
-
-// profile === 'sitaware-hq'
-// → Auto-selects SITAWARE_HQ template
-// → Sets role to 'leader'
-// → Sets mission thread to 'ISR_ONLY'
+// Profile 'cuas' → C-UAS_CELL template, 'cuas' role, CUAS_DEFENSIVE thread
+// Profile 'sitaware-hq' → SITAWARE_HQ template, 'leader' role, ISR_ONLY thread
 ```
 
-## Extension UI Plugins
+## Theme
 
-Extensions can provide UI components via the `UiPlugin` trait.
-Currently available UI plugin extensions:
+- Background: near-black (`gray-950`)
+- Panels: dark gray (`gray-900`) with `gray-800` borders
+- Accent: blue for selections
+- Alerts: red for warnings
+- Status: green/yellow/red for service health
 
-| Extension | Type | Purpose |
-|-----------|------|---------|
-| `durandal-voice-server` | ui-plugin | Voice pipeline, hotword detection |
+## Custom UI Components
 
-## Theme & Styling
-
-The app uses a dark theme based on military C2 conventions:
-
-- Background: `gray-950` (near black)
-- Panels: `gray-900` with `gray-800` borders
-- Accent: `blue-700/900` for selection
-- Alerts: `red-800/900` for warnings
-- Text: `gray-100` primary, `gray-400` secondary
-
-## Custom UI Components (furia-ui)
-
-The public UI toolkit at `furia-core/crates/furia-ui/` provides
-reusable components for building custom C2 UIs:
-
-```rust
-// Import components from the UI toolkit
-use furia_ui::components::*;
-```
-
-## Adding a New Shell
-
-1. Add type to `FuriaShell` in `c2FormationClient.ts`
-2. Register in `registry.ts`
-3. Create route in `App.tsx`
-4. Add template mapping in `entryArchetypeMatrix.ts`
-5. Define cell slots in `templateManifest.ts`
-
-## Adding a New Template
-
-1. Add to `C2Template` type union
-2. Add button in `EntryScreen.tsx`
-3. Add roles in `entryArchetypeMatrix.ts`
-4. Add manifest in `templateManifest.ts`
-5. (Optional) Add profile-driven auto-select in `EntryScreen.tsx`
+UI components are available in `furia-core/crates/furia-ui/` for building
+custom C2 frontends. These are Rust types for tactical graphics, routing,
+and collaborative engagement — reusable across different UI frameworks.
