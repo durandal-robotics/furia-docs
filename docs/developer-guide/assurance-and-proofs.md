@@ -65,3 +65,28 @@ A release is ready when:
 - marketplace proof matrix passes (or explicit SKIP(reason))
 - UI build passes
 - docs and runbooks are updated with the exact release workflow
+
+### Stricter docs ↔ code parity (public repos only)
+
+Use this checklist before each public docs release to ensure commands/endpoints
+still match real code in each public repo:
+
+| Repo | What docs must match | Fast parity commands |
+|------|-----------------------|----------------------|
+| `furia-core` | crate names, SDK trait names, build/test commands | `cd ~/Work/furia-core && cargo test --all-targets` |
+| `furia-ui` | package names, UI library usage, frontend test/build commands | `cd ~/Work/furia-ui && npx vitest run` |
+| `furia-market-server` | `/health`, `/api/v1/search`, module publish/download/compatibility endpoints, proof script references | `cd ~/Work/furia-market-server && cargo test --all-targets && ./scripts/proof-matrix.sh` |
+| `my-c2-host` | `/health`, `/api/c2/health`, `/api/c2/market/*` proxy routes, profile env vars | `cd ~/Work/my-c2-host && cargo test --all-targets && ./scripts/proof-matrix.sh` |
+| `my-c2-ui` | host/market URLs, build profiles, install/download UI flow, build commands | `cd ~/Work/my-c2-ui && npm run build` |
+
+Minimum parity sweep in `furia-docs` before publishing:
+
+```bash
+cd ~/Work/furia-docs
+rg -n "furia-control|vlordier|FuriaC4ISR|just setup|localhost:3031|furia-market -- install" docs mkdocs.yml --glob '!docs/developer-guide/assurance-and-proofs.md'
+python3 -m mkdocs build
+```
+
+Expected result:
+- zero matches for stale/proprietary patterns
+- successful MkDocs build
