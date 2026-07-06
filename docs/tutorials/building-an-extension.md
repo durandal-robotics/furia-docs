@@ -7,7 +7,7 @@ a restricted zone.
 ## Prerequisites
 
 - Rust 1.85+ with `wasm32-wasip2` target
-- Furia workspace cloned (`furia-control` + `furia-core`)
+- Public repos cloned (`my-c2-host`, `furia-core`, and optionally `my-c2-ui`)
 - `furia-market` CLI built (`cargo build -p furia-market`)
 
 ## Step 1: Scaffold the Extension

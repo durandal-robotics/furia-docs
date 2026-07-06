@@ -13,8 +13,10 @@ furia-market install profile-furia-hq
 furia-market install profile-furia-hq
 furia-market install profile-env-denied
 
-# Run the stack
-open FuriaC4ISR.app
+# Run host + UI
+cd ~/Work/my-c2-host && FURIA_C2_PROFILE=general cargo run
+# (new terminal)
+cd ~/Work/my-c2-ui && npm run dev
 ```
 
 ## Profile Structure

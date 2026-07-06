@@ -5,16 +5,21 @@ Furia is a **C2 platform** — you build your C2 by selecting profiles, configur
 ## Quickstart: Run Any C2 Type
 
 ```bash
-# 1. Pick your C2 type
-furia-market install profile-c-uas        # Counter-UAS
-furia-market install profile-furia-hq     # C4ISR Headquarters
-furia-market install profile-search-strike # Find and engage
+# 1) Run marketplace
+git clone https://github.com/durandal-robotics/furia-market-server.git
+cd furia-market-server
+cargo run
 
-# 2. (Optional) Add environment configuration
-furia-market install profile-env-contested  # EW active
+# 2) Run host (new terminal)
+git clone https://github.com/durandal-robotics/my-c2-host.git
+cd my-c2-host
+FURIA_C2_PROFILE=cuas cargo run
 
-# 3. Run the stack
-open FuriaC4ISR.app
+# 3) Run UI (new terminal)
+git clone https://github.com/durandal-robotics/my-c2-ui.git
+cd my-c2-ui
+npm install
+npm run dev
 ```
 
 ## Architecture Overview
@@ -105,24 +110,19 @@ furia-builtin-safe-ihl = ">=0.1.0"
 
 ## Deployment Options
 
-### macOS (Local Development)
+### Host build (local/release)
 
 ```bash
-./scripts/build-dmg.sh
-open FuriaC4ISR.dmg
+cd my-c2-host
+FURIA_C2_PROFILE=drone-swarm cargo build --release
+./target/release/my-c2-host
 ```
 
-### Docker Compose (Development)
+### UI build (local/release)
 
 ```bash
-docker compose -f deploy/full-stack/docker-compose.yml up -d
-```
-
-### K3s (Edge Production)
-
-```bash
-curl -sfL https://get.k3s.io | sh
-kubectl apply -f deploy/k3s/
+cd my-c2-ui
+npm run build:cuas
 ```
 
 ## Service Communication
@@ -130,15 +130,15 @@ kubectl apply -f deploy/k3s/
 ```
 ┌──────────────┐         ┌──────────────┐         ┌──────────────┐
 │  HTTP/REST   │────────▶│    Zenoh     │────────▶│     DDS      │
-│  Management  │         │  Real-time   │         │  NATO STANAG │
-│  43 services │         │  46 services │         │   1 service  │
+│  Control API │         │  Real-time   │         │  NATO STANAG │
+│ (host + UI)  │         │   streams    │         │  (optional)  │
 └──────────────┘         └──────────────┘         └──────────────┘
 ```
 
 Services communicate via three buses:
-- **HTTP** — Management, configuration, operator interaction (43 services)
-- **Zenoh** — Real-time C2 data, tracks, events, state (46 services)
-- **DDS** — NATO real-time compliance, STANAG 4586/4607 (1 service)
+- **HTTP** — Management, configuration, and operator interaction
+- **Zenoh** — Real-time C2 data, tracks, events, and state
+- **DDS** — NATO compliance paths (optional, profile-dependent)
 
 ## Data Flow
 

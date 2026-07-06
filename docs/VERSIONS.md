@@ -58,7 +58,7 @@ Furia C2 Platform **v0.2.0**
 
 | Workflow | Status |
 |----------|--------|
-| CI Lint | [![CI](https://github.com/vlordier/furia-control/actions/workflows/ci.yml/badge.svg)](https://github.com/vlordier/furia-control/actions/workflows/ci.yml) |
-| Fast Check | [![Fast Check](https://github.com/vlordier/furia-control/actions/workflows/fast-check.yml/badge.svg)](https://github.com/vlordier/furia-control/actions/workflows/fast-check.yml) |
-| Full C2 Build | [![Full C2 Build](https://github.com/vlordier/furia-control/actions/workflows/full-c2-build.yml/badge.svg)](https://github.com/vlordier/furia-control/actions/workflows/full-c2-build.yml) |
+| Host (my-c2-host) | https://github.com/durandal-robotics/my-c2-host |
+| UI (my-c2-ui) | https://github.com/durandal-robotics/my-c2-ui |
+| Marketplace (furia-market-server) | https://github.com/durandal-robotics/furia-market-server |
 | Docs | [![Docs](https://github.com/durandal-robotics/furia-docs/actions/workflows/deploy.yml/badge.svg)](https://github.com/durandal-robotics/furia-docs/actions/workflows/deploy.yml) |

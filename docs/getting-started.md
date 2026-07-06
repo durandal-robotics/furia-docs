@@ -11,31 +11,38 @@ for YOUR mission.
 
 ## Tiered Approach — Start Small, Scale Up
 
-### 🟢 Tier 1: Core C2 (3 services, 5 minutes)
+### 🟢 Tier 1: Core C2 (2 services, 5 minutes)
 
-The absolute minimum: API gateway + extension system. No Postgres needed.
+The absolute minimum: C2 host + marketplace. No Postgres needed.
 
 ```bash
-git clone https://github.com/vlordier/furia-control.git
-cd furia-control
-just setup
+git clone https://github.com/durandal-robotics/my-c2-host.git
+git clone https://github.com/durandal-robotics/furia-market-server.git
+
+# terminal 1
+cd my-c2-host
+cargo run
+
+# terminal 2
+cd ../furia-market-server
+cargo run
 
 # See what's running:
-open http://localhost:3226/swagger-ui/   # API Gateway (23 endpoints)
-open http://localhost:3030/api/v1/search?q=*  # Marketplace (98 modules)
+open http://localhost:3226/health
+open http://localhost:3226/api/c2/health
+open http://localhost:3030/api/v1/search?q=*  # Marketplace
 ```
 
 | Service | Port | Purpose |
 |---------|------|---------|
-| `interop-gateway` | 3226 | API, Swagger, CoT, ATAK, STANAG |
+| `my-c2-host` | 3226 | C2 host API, profile/capability health, market proxy |
 | `furia-market-server` | 3030 | Extension registry, search, publish |
-| `furia-module-loader` | 3031 | WASM sandbox, module lifecycle |
 
-**What you can do with 3 services:**
-- Browse the API documentation (Swagger UI)
+**What you can do with 2 services:**
+- Validate host health/capability surfaces
 - Query the marketplace for extensions
-- Install and load WASM modules
-- Start building your own extension
+- Inspect module versions/details/download artifacts
+- Start building your own host/UI integration
 
 **No Postgres needed.** Runs in memory mode (`FURIA_STORAGE_DRIVER=memory`).
 
@@ -83,18 +90,21 @@ Each profile activates exactly the services you need — not all 152.
 
 ## Other Quickstart Paths
 
-### Desktop App (macOS DMG)
+### Desktop App (my-c2-ui)
 
 ```bash
-cd furia-control
-scripts/build-dmg.sh
-open FuriaC4ISR.dmg
+git clone https://github.com/durandal-robotics/my-c2-ui.git
+cd my-c2-ui
+npm install
+npm run dev
 ```
 
-### Docker Compose
+### Local release build (my-c2-host)
 
 ```bash
-docker compose -f deploy/full-stack/docker-compose.yml up -d
+cd my-c2-host
+FURIA_C2_PROFILE=cuas cargo build --release
+./target/release/my-c2-host
 ```
 
 ## Build an Extension

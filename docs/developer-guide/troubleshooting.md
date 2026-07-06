@@ -25,7 +25,7 @@ export FURIA_STORAGE_DRIVER=memory
 ls ../furia-core/crates/furia-sdk/src/lib.rs
 
 # If missing:
-git clone https://github.com/vlordier/furia-core.git ../furia-core
+git clone https://github.com/durandal-robotics/furia-core.git ../furia-core
 ```
 
 ## Swagger UI Shows 404
@@ -38,7 +38,7 @@ curl http://localhost:3226/health
 lsof -i :3226
 
 # If not running, start it:
-.cargo-target/release/interop-gateway
+target/release/my-c2-host
 ```
 
 ## Extension Installation Fails
@@ -67,8 +67,9 @@ docker ps | grep postgis
 # Or set in-memory mode:
 export FURIA_STORAGE_DRIVER=memory
 
-# Relaunch the app:
-open FuriaC4ISR.app
+# Relaunch the UI:
+cd ~/Work/my-c2-ui
+npm run dev
 ```
 
 ## WASM Module Not Loading
@@ -86,5 +87,7 @@ curl http://localhost:3031/api/v1/modules/my-module
 
 ## Support
 
-- [GitHub Issues](https://github.com/vlordier/furia-control/issues)
+- [my-c2-host Issues](https://github.com/durandal-robotics/my-c2-host/issues)
+- [my-c2-ui Issues](https://github.com/durandal-robotics/my-c2-ui/issues)
+- [furia-market-server Issues](https://github.com/durandal-robotics/furia-market-server/issues)
 - [Documentation](https://durandal-robotics.github.io/furia-docs/)
