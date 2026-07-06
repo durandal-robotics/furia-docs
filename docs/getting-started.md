@@ -107,10 +107,21 @@ furia-market dev my-extension
 ## Learn More
 
 - [Architecture Overview](developer-guide/building-your-own-c2.md)
+- [Assurance & Proofs](developer-guide/assurance-and-proofs.md)
 - [SDK Reference](SDK.md)
 - [Extension Catalog](extensions/catalog.md)
 - [C2 Profiles](c2-types/overview.md)
 - [Troubleshooting](developer-guide/troubleshooting.md)
+
+## Standalone Repositories
+
+For delivery-focused builds, use the split repositories:
+
+- `durandal-robotics/my-c2-host`
+- `durandal-robotics/my-c2-ui`
+- `durandal-robotics/furia-market-server`
+
+This lets teams ship host/UI/market independently while keeping SDK compatibility.
 
 ## Naming
 

@@ -20,3 +20,8 @@ mkdocs build
 ## Deployment
 
 Pushed to `main` → GitHub Actions builds and deploys to GitHub Pages automatically.
+
+## Notable Pages
+
+- `docs/developer-guide/assurance-and-proofs.md`
+- `docs/developer-guide/building-your-own-c2.md`

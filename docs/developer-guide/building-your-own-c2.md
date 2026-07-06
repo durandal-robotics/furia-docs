@@ -159,3 +159,15 @@ Extension → Market Server → Module Loader → Provider Registry
 - [Building an Extension](../tutorials/building-an-extension.md) — Step-by-step
 - [Extension Catalog](../extensions/catalog.md) — All 64 extensions
 - [C2 Profiles](../c2-types/overview.md) — All 25 configurations
+- [Assurance & Proofs](assurance-and-proofs.md) — Required proof lanes before release
+
+## Recommended Multi-Repo Delivery Layout
+
+Use this split for productized deployments:
+
+- `my-c2-host` → service host/composer and profile boot wiring
+- `my-c2-ui` → operator UI app and build artifacts
+- `furia-market-server` → extension marketplace API + catalog lifecycle
+- `furia-core` / `furia-ui` / `furia-sdk-examples` / `furia-plugin-example` → shared contracts and examples
+
+This keeps each product independently releasable while preserving ecosystem compatibility.

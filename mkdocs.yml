@@ -30,6 +30,7 @@ nav:
     - STANAG 4586: integrations/stanag.md
   - Developer Guide:
     - Building Your Own C2: developer-guide/building-your-own-c2.md
+    - Assurance & Proofs: developer-guide/assurance-and-proofs.md
     - SDK Reference: SDK.md
     - Service Port Map: developer-guide/service-ports.md
     - Sizing Guide: developer-guide/sizing-guide.md

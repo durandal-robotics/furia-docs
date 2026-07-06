@@ -31,6 +31,16 @@ just setup
 open http://localhost:3226/swagger-ui/
 ```
 
+## Delivery-Ready Split Repos
+
+For production packaging, use:
+
+- `my-c2-host` (host/runtime)
+- `my-c2-ui` (UI artifact)
+- `furia-market-server` (module marketplace)
+
+See [Assurance and Proofs](developer-guide/assurance-and-proofs.md) for release gates.
+
 ## API Walkthrough
 
 ![API Walkthrough](screenshots/api-walkthrough.gif)
