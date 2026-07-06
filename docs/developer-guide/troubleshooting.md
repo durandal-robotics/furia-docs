@@ -47,9 +47,6 @@ target/release/my-c2-host
 # Check marketplace is running
 curl http://localhost:3030/api/v1/search?q=*
 
-# Check module loader is running
-curl http://localhost:3031/api/v1/health
-
 # Verify the extension exists
 furia-market search my-extension
 
@@ -81,8 +78,8 @@ file target/wasm32-wasip2/release/my_module.wasm
 # Verify the module exports the required ABI
 wasm-tools dump target/wasm32-wasip2/release/my_module.wasm | grep provider_call
 
-# Check sandbox logs
-curl http://localhost:3031/api/v1/modules/my-module
+# Check host market proxy for module details
+curl http://localhost:3226/api/c2/market/modules/my-module/latest
 ```
 
 ## Support

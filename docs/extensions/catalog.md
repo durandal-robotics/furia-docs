@@ -1,7 +1,8 @@
 # Extension Catalog
 
-**64 extensions** across **15 SDK trait kinds**. Every extension is packaged as a WASM module
-with a `furia-mod.toml` manifest, signed with Ed25519, and available in the marketplace.
+This catalog is a reference taxonomy of extension types in the ecosystem.
+Every extension is packaged as a WASM module with a `furia-mod.toml` manifest
+and delivered through marketplace APIs.
 
 ## Extension Kinds
 
@@ -163,4 +164,3 @@ with a `furia-mod.toml` manifest, signed with Ed25519, and available in the mark
 |-----------|-------------|--------------|
 | `durandal-tactical-graphics` | Tactical graphics, control measures, and battle tracking symbology | none |
 | `durandal-voice-server` | Voice pipeline — audio stream management, hotword detection, WebSocket daemon | furia-sdk |
-

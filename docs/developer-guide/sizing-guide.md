@@ -2,12 +2,11 @@
 
 ## Resource Estimates
 
-| Deployment | Users | RAM | CPU | Storage | Services |
+| Deployment | Users | RAM | CPU | Storage | Notes |
 |-----------|-------|-----|-----|---------|----------|
-| **C-UAS** (3 svcs) | 1-3 | 1 GB | 1 core | 5 GB | counter-uas-director, sapient-adapter, airspace |
-| **C4ISR HQ** (7 svcs) | 3-10 | 4 GB | 2 cores | 20 GB | gateway, policy, mission, messaging, postgis |
-| **Full Platform** (152 svcs) | 10-50 | 16 GB | 8 cores | 100 GB | all services + postgis |
-| **Edge/K3s** (7 svcs) | 1-5 | 2 GB | 2 cores | 10 GB | minimal: gateway, policy, mission, messaging |
+| **Starter host + market** | 1-3 | 512 MB-1 GB | 1 core | 2-5 GB | `my-c2-host` + `furia-market-server` |
+| **Starter + UI** | 1-5 | 1-2 GB | 2 cores | 5-10 GB | add `my-c2-ui` dev/runtime |
+| **Expanded mission stack** | 5+ | Varies by services | Varies | Varies | add `furia-core` services/providers as needed |
 
 ## Database Sizing
 
@@ -23,7 +22,7 @@
 
 | Option | Setup Time | Complexity | Best For |
 |--------|-----------|------------|----------|
-| macOS DMG | 2 min | Low | Demo, single operator |
-| Docker Compose | 5 min | Low | Development, team eval |
-| K3s | 10 min | Medium | Edge production (1-5 users) |
-| Full K8s | 30+ min | High | Enterprise (10-50 users) |
+| Local host + market | 5 min | Low | API development and integration |
+| Local host + market + UI | 10 min | Low | Operator UX development |
+| Docker Compose | 10-20 min | Medium | Team integration environments |
+| K3s/K8s | 30+ min | High | Production deployments |

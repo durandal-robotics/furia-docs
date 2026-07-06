@@ -1,34 +1,41 @@
 # Furia C2 Platform
 
-**7 C2 templates** · **64 extensions** · **152 services** · **99 marketplace modules**
+**Profile-driven host** · **Standalone UI** · **Marketplace-backed modules**
 
-Furia is a software platform that generates complete C2 systems — from
-vehicle-mounted Edge C2 to full Headquarters — from a single codebase,
-selectable by mission profile.
+Furia is a software platform for composing complete C2 systems from reusable
+building blocks. Start with a minimal host/UI/market stack, then add mission
+services and extensions from the public ecosystem repos.
 
-## Pick Your Template
+## Pick Your Starting Profile
 
-| Template | Services | Best For |
+| Profile | Best For | Notes |
 |----------|----------|----------|
-| **🏛 C2 Headquarters** | 7 | Brigade/Division HQ — full command post |
-| **🔭 C2 Frontline** | 4 | Platoon/Company — tactical C2 |
-| **🚛 C2 Edge** | 4 | AFV/IFV crew — lightweight vehicle C2 |
-| **⚓ C2 Maritime** | 3 | Naval HQ — maritime domain awareness |
-| **🚁 C2 Airborne** | 3 | Aviation — MUM-T, airspace mgmt |
-| **🧠 C2 Intelligence** | 5 | J2 — intelligence fusion |
-| **📨 C2 Messaging** | 1 | Any echelon — military messaging |
+| `general` | Baseline C2 shell | Default starter profile |
+| `cuas` | Counter-UAS workflows | Enables C-UAS capability set |
+| `drone-swarm` | Swarm operations | Enables swarm-centric capability set |
+| `isr` | ISR-heavy missions | Enables ISR-centric capability set |
 
 ## Quickstart
 
 ```bash
-# Prerequisites: git, Rust, and 'just'
-cargo install just
+# Prerequisites: git, Rust, Node.js
 
-# One-command setup (clones furia-core, builds release, starts gateway)
-just setup
+git clone https://github.com/durandal-robotics/my-c2-host.git
+git clone https://github.com/durandal-robotics/furia-market-server.git
+git clone https://github.com/durandal-robotics/my-c2-ui.git
 
-# Open the API
-open http://localhost:3226/swagger-ui/
+# terminal 1
+cd my-c2-host
+FURIA_C2_PROFILE=general cargo run
+
+# terminal 2
+cd ../furia-market-server
+cargo run
+
+# terminal 3
+cd ../my-c2-ui
+npm install
+npm run dev
 ```
 
 ## Delivery-Ready Split Repos
@@ -50,35 +57,27 @@ See [Assurance and Proofs](developer-guide/assurance-and-proofs.md) for release 
 
 ```mermaid
 graph TB
-    subgraph "7 C2 Templates"
-        HQ["C2 Headquarters"]
-        FL["C2 Frontline"]
-        ED["C2 Edge"]
-        MA["C2 Maritime"]
-        AB["C2 Airborne"]
-        IN["C2 Intelligence"]
-        MS["C2 Messaging"]
+    subgraph "Profile Layer"
+        GP["general"]
+        CU["cuas"]
+        SW["drone-swarm"]
+        ISR["isr"]
     end
-    subgraph "Platform Layer"
-        UI["Tauri Desktop App<br/>(SolidJS)"]
-        SVC["152 Backend Services"]
-        EXT["64 WASM Extensions"]
-        DB["PostGIS Database"]
+    subgraph "Runtime Layer"
+        UI["my-c2-ui<br/>(SolidJS + Vite)"]
+        HOST["my-c2-host<br/>(profile + capability API)"]
+        MARKET["furia-market-server<br/>(module registry APIs)"]
     end
-    subgraph "Extension Types"
-        PL["Policy Providers"]
-        SI["Simulation Providers"]
-        SE["Sensor Adapters"]
-        DC["Decomposition Strategies"]
+    subgraph "Extension Ecosystem"
+        CORE["furia-core traits + crates"]
+        MOD["WASM/manifest modules"]
     end
-    HQ --> UI
-    FL --> UI
-    ED --> UI
-    UI --> SVC
-    SVC --> DB
-    SVC --> EXT
-    EXT --> PL
-    EXT --> SI
-    EXT --> SE
-    EXT --> DC
+    GP --> HOST
+    CU --> HOST
+    SW --> HOST
+    ISR --> HOST
+    UI --> HOST
+    HOST --> MARKET
+    MARKET --> MOD
+    MOD --> CORE
 ```

@@ -1,64 +1,33 @@
-# Platform Statistics
+# Versions and Compatibility
 
-Furia C2 Platform **v0.2.0**
+This page tracks the public split-repo delivery surface.
 
-## Overview
+## Public Repositories
 
-| Metric | Value |
-|--------|-------|
-| **Services** | 151 |
-| **Crates** | 111 |
-| **Extension manifests** | 64 |
-| **C2 profiles** | 25 |
-| **Marketplace seeds** | 145 |
-| **Workspace version** | v0.2.0 |
+| Component | Repository |
+|-----------|------------|
+| Host runtime | https://github.com/durandal-robotics/my-c2-host |
+| UI shell | https://github.com/durandal-robotics/my-c2-ui |
+| Marketplace server | https://github.com/durandal-robotics/furia-market-server |
+| Shared contracts/runtime crates | https://github.com/durandal-robotics/furia-core |
+| Shared UI libraries/patterns | https://github.com/durandal-robotics/furia-ui |
 
-## SDK Traits (22)
+## Compatibility Contract
 
-| Trait | Purpose | Source |
-|-------|---------|--------|
-| `AirspaceManager` | Airspace deconfliction | `furia-sdk/src/airspacemanager.rs` |
-| `AssessmentEngine` | BDA, damage scoring | `furia-sdk/src/assessment.rs` |
-| `DecompositionStrategy` | Intent-to-task compilation | `furia-sdk/src/decompositionstrategy.rs` |
-| `DispatchAdapter` | Action dispatch, protocol bridging | `furia-sdk/src/dispatch.rs` |
-| `EngagementPlanner` | Multi-platform engagement coordination | `furia-sdk/src/engagementplanner.rs` |
-| `FusionProvider` | Multi-source sensor fusion | `furia-sdk/src/fusion.rs` |
-| `LogisticsProvider` | Supply chain, sustainment | `furia-sdk/src/logistics.rs` |
-| `PolicyProvider` | IHL gating, ROE enforcement | `furia-sdk/src/policy.rs` |
-| `SensorAdapter` | Track ingestion, classification | `furia-sdk/src/sensor.rs` |
-| `SimulationProvider` | Entity simulation, tick loops | `furia-sdk/src/simulation.rs` |
+- `my-c2-host` consumes profile and capability conventions from `furia-core`.
+- `my-c2-ui` targets host APIs (`/api/c2/health`, `/api/c2/market/*`).
+- `furia-market-server` provides module search/version/download/publish APIs for host and UI.
 
-## Service Ports
+## CI/Release Status
 
-| Service | Port |
-|---------|------|
-| `abort-engine` | 3156 |
-| `air-defense-counter-air` | 3232 |
-| `airspace-service` | 3152 |
-| `all-source-intel-fusion` | 3161 |
-| `auth-proxy` | 3105 |
-| `bandwidth-aware-delivery` | 3380 |
-| `battle-rhythm-service` | 3129 |
-| `bda-service` | 3102 |
-| `bff-service` | 3470 |
-| `cas-service` | 3116 |
-| `ccir-engine` | 3117 |
-| `civil-infrastructure` | 3472 |
-| `civil-services` | 3499 |
-| `coalition-partner-cps` | 3332 |
-| `cognitive-load-management` | 3341 |
-| `collection-management` | 3143 |
-| `comm-sim-feasibility-sidecar` | 3372 |
-| `command-dashboard` | 3460 |
-| `commander-decision-cycle` | 3365 |
-| `commander-interlock-hud` | 3396 |
-| ... (130 with detected ports) | ... |
+Use each repository's Actions page for current build and release status:
 
-## CI Status
+- [`my-c2-host` workflows](https://github.com/durandal-robotics/my-c2-host/actions)
+- [`my-c2-ui` workflows](https://github.com/durandal-robotics/my-c2-ui/actions)
+- [`furia-market-server` workflows](https://github.com/durandal-robotics/furia-market-server/actions)
+- [`furia-core` workflows](https://github.com/durandal-robotics/furia-core/actions)
+- [`furia-ui` workflows](https://github.com/durandal-robotics/furia-ui/actions)
+- [`furia-docs` workflows](https://github.com/durandal-robotics/furia-docs/actions)
 
-| Workflow | Status |
-|----------|--------|
-| Host (my-c2-host) | https://github.com/durandal-robotics/my-c2-host |
-| UI (my-c2-ui) | https://github.com/durandal-robotics/my-c2-ui |
-| Marketplace (furia-market-server) | https://github.com/durandal-robotics/furia-market-server |
-| Docs | [![Docs](https://github.com/durandal-robotics/furia-docs/actions/workflows/deploy.yml/badge.svg)](https://github.com/durandal-robotics/furia-docs/actions/workflows/deploy.yml) |
+> Note: numeric inventory counts (service totals, extension totals, seeded module totals)
+> are intentionally not hardcoded here because they evolve continuously across repos.

@@ -1,53 +1,26 @@
-# Counter-UAS (C-UAS) — `profile-c-uas`
+# Counter-UAS (C-UAS) Profile
 
-Full counter-drone C2 with airspace management, electronic warfare, IFF,
-force protection, and C-UAS threat scoring.
-
-## Services
-
-| Service | Port | Purpose |
-|---------|------|---------|
-| `counter-uas-director` | 3475 | Swarm custody, EMCON, cue audit |
-| `sapient-adapter` | 3395 | SAPIENT C-UAS detection/fusion ingest |
-| `airspace-service` | 3050 | Airspace management, killboxes |
-
-## Extensions
-
-| Extension | Kind | Purpose |
-|-----------|------|---------|
-| `durandal-airspace` | policy | Airspace mgmt, restricted ops |
-| `durandal-ew` | simulation | Electronic warfare simulation |
-| `durandal-iff` | sensor | IFF interrogation |
-| `durandal-force-protection` | policy | Force protection |
-| `furia-cuas-threat-scorer` | simulation | Threat scoring |
-
-## Health
-
-```json
-GET /health
-{"status":"healthy","c2_profile":"cuas","loaded_providers":22}
-```
-
-## Screenshot
-
-![C-UAS Dashboard](../screenshots/marketplace-c-uas.png)
-
-## Quickstart
+Public starter C-UAS is exposed through:
 
 ```bash
-# macOS DMG
-open FuriaC4ISR.dmg
-
-# Or from source
-cargo run --release -p furia-market -- install profile-c-uas
-cargo run --release -p counter-uas-director &
-cargo run --release -p sapient-adapter &
+cd ~/Work/my-c2-host
+FURIA_C2_PROFILE=cuas cargo run
 ```
 
-## Compose with Environment
+In another terminal:
 
 ```bash
-# C-UAS in contested spectrum
-furia-market install profile-c-uas
-furia-market install profile-env-contested
+cd ~/Work/my-c2-ui
+npm run dev
 ```
+
+## What to Verify
+
+- `GET http://127.0.0.1:3226/health` returns `c2_profile: "cuas"`
+- `GET http://127.0.0.1:3226/api/c2/health` includes C-UAS capabilities
+- UI shows the active profile/capability pills from host health
+
+## Extending C-UAS
+
+For full C-UAS stacks (director, SAPIENT ingest, airspace services), add
+mission services/providers in `my-c2-host` and corresponding UX in `my-c2-ui`.

@@ -1,19 +1,15 @@
 # Getting Started
 
-## Don't Be Overwhelmed by "152 Services"
+## Start Small, Then Compose
 
-You don't need 152 services. You need **3**.
-
-Furia has 152 services because it can generate C2 systems for **25 different
-mission types** (C-UAS, C4ISR HQ, Frontline, ISR, MUM-T, maritime, etc.).
-Each mission type uses a different combination. You only run the services
-for YOUR mission.
+You do not need a full mission stack to start. Begin with **host + market + UI**
+and add only the services your mission requires.
 
 ## Tiered Approach — Start Small, Scale Up
 
-### 🟢 Tier 1: Core C2 (2 services, 5 minutes)
+### 🟢 Tier 1: Core C2 APIs (2 services, ~5 minutes)
 
-The absolute minimum: C2 host + marketplace. No Postgres needed.
+The absolute minimum is `my-c2-host` + `furia-market-server`. No Postgres is required.
 
 ```bash
 git clone https://github.com/durandal-robotics/my-c2-host.git
@@ -30,7 +26,7 @@ cargo run
 # See what's running:
 open http://localhost:3226/health
 open http://localhost:3226/api/c2/health
-open http://localhost:3030/api/v1/search?q=*  # Marketplace
+open "http://localhost:3030/api/v1/search?q=*"
 ```
 
 | Service | Port | Purpose |
@@ -46,47 +42,41 @@ open http://localhost:3030/api/v1/search?q=*  # Marketplace
 
 **No Postgres needed.** Runs in memory mode (`FURIA_STORAGE_DRIVER=memory`).
 
-### 🟡 Tier 2: C4ISR HQ (+4 services, 10 minutes)
+### 🟡 Tier 2: Add Operator UI (+1 app, ~10 minutes)
 
-Add persistence, mission planning, and IHL gating.
+Run `my-c2-ui` against your host.
 
 ```bash
-export DATABASE_URL=postgres://furia:furia@localhost:5432/furia-c4isr
-just postgres
-cargo run --release -p mission-orchestrator &
-cargo run --release -p policy-service &
-cargo run --release -p military-messaging &
+git clone https://github.com/durandal-robotics/my-c2-ui.git
+cd my-c2-ui
+npm install
+npm run dev
 ```
 
 | Service | Port | Purpose |
 |---------|------|---------|
-| `postgis` | 5432 | PostgreSQL + PostGIS |
-| `mission-orchestrator` | 3003 | Mission lifecycle, persistence |
-| `policy-service` | 3004 | IHL gating, ROE enforcement |
-| `military-messaging` | 3380 | SitRep, OPORD, MEDEVAC 9-line |
+| `my-c2-ui` | 5173 (dev) | Operator UX consuming host + market APIs |
 
 **What you can now do:**
-- Create missions that persist across restarts
-- Enforce ROE with IHL gating
-- Send and receive C2 messages
-- Track mission history with BDA chains
+- Inspect live profile/capability state from the host
+- Browse/search modules through the market proxy
+- Download/install-ready module artifacts from the UI
 
-### 🔴 Tier 3: Full Platform (All 152 services)
+### 🔴 Tier 3: Mission-Specific Expansion
 
-Install a C2 profile to activate the right services for your mission.
+Add additional services from `furia-core` and related repos (for example:
+mission orchestration, policy/IHL, interop bridges) as required by your use case.
 
 ```bash
-# Counter-UAS
-cargo run --release -p furia-market -- install profile-c-uas
-
-# Or C4ISR Headquarters
-cargo run --release -p furia-market -- install profile-furia-hq
-
-# Or Tactical Frontline
-cargo run --release -p furia-market -- install profile-furia-frontline
+# Example host profile switches
+cd ../my-c2-host
+FURIA_C2_PROFILE=cuas cargo run
+FURIA_C2_PROFILE=drone-swarm cargo run
+FURIA_C2_PROFILE=isr cargo run
 ```
 
-Each profile activates exactly the services you need — not all 152.
+Each profile advertises a capability set and can be extended with additional
+runtime services when needed.
 
 ## Other Quickstart Paths
 

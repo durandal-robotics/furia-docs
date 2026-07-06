@@ -32,13 +32,13 @@ npm run dev
 │  │  (Map)   │ │Planner   │ │    (Extensions)      │ │
 │  └──────────┘ └──────────┘ └──────────────────────┘ │
 ├─────────────────────────────────────────────────────┤
-│                 152 Backend Services                 │
+│              Profile-selected Services               │
 │  ┌──────────┐ ┌──────────┐ ┌──────────────────────┐ │
 │  │ Interop  │ │Mission   │ │    Policy Service     │ │
 │  │ Gateway  │ │Orch.     │ │    (IHL, ROE)         │ │
 │  └──────────┘ └──────────┘ └──────────────────────┘ │
 ├─────────────────────────────────────────────────────┤
-│              63 WASM Extensions                      │
+│              WASM/Manifest Extensions                │
 │  ┌──────────┐ ┌──────────┐ ┌──────────────────────┐ │
 │  │ IHL Gate │ │ BDA      │ │    Voice STT         │ │
 │  │ (Policy) │ │(Assess)  │ │    (Sensor)          │ │
@@ -140,25 +140,24 @@ Services communicate via three buses:
 - **Zenoh** — Real-time C2 data, tracks, events, and state
 - **DDS** — NATO compliance paths (optional, profile-dependent)
 
-## Data Flow
+## Data Flow (starter stack)
 
 ```
-CoT Event → Interop Gateway → Graph DB → COP
-  (ATAK)      (3226)          (PostGIS)  (Tauri UI)
+Host health/capabilities → my-c2-host → my-c2-ui
+      (HTTP)                (3226)      (Vite/Tauri)
 
-Mission → Mission Orchestrator → Policy Service → Kill Chain
-  (Plan)      (3003)              (3004)           (3005)
+Module catalog/search → furia-market-server → my-c2-host proxy → my-c2-ui
+      (HTTP)                  (3030)            (3226)          (browser)
 
-Extension → Market Server → Module Loader → Provider Registry
-  (WASM)     (3030)          (3031)          (Runtime)
+Extension package download → market `/download` endpoint → UI/operator workflow
 ```
 
 ## Next Steps
 
 - [UI Components](../ui-components/overview.md) — App layout, panels, shells
 - [Building an Extension](../tutorials/building-an-extension.md) — Step-by-step
-- [Extension Catalog](../extensions/catalog.md) — All 64 extensions
-- [C2 Profiles](../c2-types/overview.md) — All 25 configurations
+- [Extension Catalog](../extensions/catalog.md) — Module taxonomy and live query pattern
+- [C2 Profiles](../c2-types/overview.md) — Profile-based composition model
 - [Assurance & Proofs](assurance-and-proofs.md) — Required proof lanes before release
 
 ## Recommended Multi-Repo Delivery Layout
